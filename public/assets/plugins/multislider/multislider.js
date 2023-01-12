@@ -42,7 +42,7 @@
         // = INITIALIZE =
         function init(){
             minifyContent();        // minify html
-            createSettings();       // merge defaults and user provided options
+            createSettings();       // merge defaults and Budget provided options
             saveData();             // add data object to DOM el with reference to animation functions, allows for methods to reference at any time
             selectAnimations();     // choose default animation
         }
@@ -360,7 +360,7 @@
                     }
                 );
             });
-        } 
+        }
         return $multislider;
     }
 })(jQuery);

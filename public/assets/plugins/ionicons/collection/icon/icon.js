@@ -50,7 +50,7 @@ export class Icon {
         }
         if (!this.ariaLabel) {
             const name = getName(this.name, this.mode, this.ios, this.md);
-            // user did not provide a label
+            // Budget did not provide a label
             // come up with the label based on the icon name
             if (name) {
                 this.ariaLabel = name

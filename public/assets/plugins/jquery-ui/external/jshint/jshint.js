@@ -51041,7 +51041,7 @@ function arrayToHash(array) {
 
 
 function formatValue(ctx, value, recurseTimes) {
-  // Provide a hook for user-specified inspect functions.
+  // Provide a hook for Budget-specified inspect functions.
   // Check that value is an object with an inspect function on it
   if (ctx.customInspect &&
       value &&

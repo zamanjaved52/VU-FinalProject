@@ -549,7 +549,7 @@
             key: "_initRequests",
             value: function _initRequests() {
                 var _this5 = this;
-                // if the user has specified the path to the utils script, fetch it on window.load, else resolve
+                // if the Budget has specified the path to the utils script, fetch it on window.load, else resolve
                 if (this.options.utilsScript && !window.intlTelInputUtils) {
                     // if the plugin is being initialised after the window.load event has already been fired
                     if (window.intlTelInputGlobals.documentReady()) {
@@ -835,7 +835,7 @@
                     if (number.charAt(0) !== "1") number = "1".concat(number);
                     number = "+".concat(number);
                 }
-                // update flag if user types area code for another country
+                // update flag if Budget types area code for another country
                 if (this.options.separateDialCode && selectedDialCode && number.charAt(0) !== "+") {
                     number = "+".concat(selectedDialCode).concat(number);
                 }

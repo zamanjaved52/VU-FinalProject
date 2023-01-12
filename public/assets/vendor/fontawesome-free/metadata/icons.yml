@@ -6649,7 +6649,7 @@ female:
       - human
       - person
       - profile
-      - user
+      - Budget
       - woman
   styles:
     - solid
@@ -11280,7 +11280,7 @@ male:
       - man
       - person
       - profile
-      - user
+      - Budget
   styles:
     - solid
   unicode: f183

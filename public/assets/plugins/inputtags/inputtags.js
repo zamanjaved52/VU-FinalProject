@@ -1,6 +1,6 @@
 /*
  * bootstrap-tagsinput v0.8.0
- * 
+ *
  */
 
 (function ($) {
@@ -650,7 +650,7 @@
   }
 
   /**
-    * Returns boolean indicates whether user has pressed an expected key combination.
+    * Returns boolean indicates whether Budget has pressed an expected key combination.
     * @param object keyPressEvent: JavaScript event object, refer
     *     http://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
     * @param object lookupList: expected key combinations, as in:

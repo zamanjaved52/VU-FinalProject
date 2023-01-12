@@ -1,7 +1,7 @@
 $(window).on("load", function() {
     "use strict";
 
-    
+
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 
@@ -187,7 +187,7 @@ $(window).on("load", function() {
     });
 
 
-    //  ============== ChatBox ============== 
+    //  ============== ChatBox ==============
 
 
     $(".chat-mg").on("click", function(){
@@ -224,8 +224,8 @@ $(window).on("load", function() {
 
     // ============= User Account Setting Open ===========
 
-    $(".user-info").on("click", function(){
-        $(this).next(".user-account-settingss").toggleClass("active");
+    $(".Budget-info").on("click", function(){
+        $(this).next(".Budget-account-settingss").toggleClass("active");
     });
 
     //  ============= FORUM LINKS MOBILE MENU FUNCTION =========

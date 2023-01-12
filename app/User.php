@@ -2,44 +2,103 @@
 
 namespace App;
 
+use App\Notifications\VerifyUserNotification;
+use Carbon\Carbon;
+use Hash;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use SoftDeletes, Notifiable, HasApiTokens;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-    'name','email','password','phone','type','image','boat_detail','find_from'
-    ];
+    public $table = 'users';
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token','type'
+        'password',
+        'remember_token',
     ];
 
-
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
+    protected $dates = [
+        'updated_at',
+        'created_at',
+        'deleted_at',
+        'email_verified_at',
     ];
-    public function properties()
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'approved',
+        'rejected',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+        'is_approved',
+        'remember_token',
+        'email_verified_at',
+    ];
+
+    public function __construct(array $attributes = [])
     {
-        return $this->hasMany(Property::class);
+        parent::__construct($attributes);
+        self::created(function (User $user) {
+            $registrationRole = config('panel.registration_default_role');
+
+            if (!$user->roles()->get()->contains($registrationRole)) {
+                $user->roles()->attach($registrationRole);
+            }
+        });
+    }
+
+    public function getEmailVerifiedAtAttribute($value)
+    {
+        return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('panel.date_format') . ' ' . config('panel.time_format')) : null;
+    }
+
+    public function setEmailVerifiedAtAttribute($value)
+    {
+        $this->attributes['email_verified_at'] = $value ? Carbon::createFromFormat(config('panel.date_format') . ' ' . config('panel.time_format'), $value)->format('Y-m-d H:i:s') : null;
+    }
+
+    public function setPasswordAttribute($input)
+    {
+        if ($input) {
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+        }
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+    public function getApprovedStatusAttribute(): string
+    {
+        if($this->is_approved == null)
+        {
+            return 'pending';
+        }elseif($this->is_approved == '0')
+        {
+            return 'rejected';
+        }else{
+            return 'approved';
+        }
+    }
+
+    public function budgets(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+      return $this->hasMany(Budget::class);
     }
 }
+;

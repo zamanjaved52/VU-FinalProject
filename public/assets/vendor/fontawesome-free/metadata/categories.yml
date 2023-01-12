@@ -456,7 +456,7 @@ clothing:
     - shoe-prints
     - socks
     - tshirt
-    - user-tie
+    - Budget-tie
   label: Clothing
 code:
   icons:
@@ -483,7 +483,7 @@ code:
     - sitemap
     - stream
     - terminal
-    - user-secret
+    - Budget-secret
     - window-close
     - window-maximize
     - window-minimize
@@ -766,7 +766,7 @@ education:
     - school
     - shapes
     - theater-masks
-    - user-graduate
+    - Budget-graduate
   label: Education
 emoji:
   icons:
@@ -1059,7 +1059,7 @@ health:
     - plus-square
     - prescription
     - stethoscope
-    - user-md
+    - Budget-md
     - wheelchair
   label: Health
 holiday:
@@ -1311,9 +1311,9 @@ interfaces:
     - undo
     - undo-alt
     - upload
-    - user
-    - user-alt
-    - user-circle
+    - Budget
+    - Budget-alt
+    - Budget-circle
     - volume-down
     - volume-mute
     - volume-off
@@ -1565,8 +1565,8 @@ medical:
     - teeth-open
     - thermometer
     - tooth
-    - user-md
-    - user-nurse
+    - Budget-md
+    - Budget-nurse
     - vial
     - vials
     - weight
@@ -2010,7 +2010,7 @@ science-fiction:
     - satellite
     - satellite-dish
     - space-shuttle
-    - user-astronaut
+    - Budget-astronaut
   label: Science Fiction
 security:
   icons:
@@ -2035,9 +2035,9 @@ security:
     - shield-alt
     - unlock
     - unlock-alt
-    - user-lock
-    - user-secret
-    - user-shield
+    - Budget-lock
+    - Budget-secret
+    - Budget-shield
   label: Security
 shapes:
   icons:
@@ -2102,10 +2102,10 @@ social:
     - thumbs-down
     - thumbs-up
     - thumbtack
-    - user
-    - user-circle
-    - user-friends
-    - user-plus
+    - Budget
+    - Budget-circle
+    - Budget-friends
+    - Budget-plus
     - users
     - video
   label: Social
@@ -2248,10 +2248,10 @@ status:
     - toggle-on
     - unlock
     - unlock-alt
-    - user
-    - user-alt
-    - user-alt-slash
-    - user-slash
+    - Budget
+    - Budget-alt
+    - Budget-alt-slash
+    - Budget-slash
     - video
     - video-slash
     - volume-down
@@ -2360,30 +2360,30 @@ users-people:
     - snowboarding
     - street-view
     - swimmer
-    - user
-    - user-alt
-    - user-alt-slash
-    - user-astronaut
-    - user-check
-    - user-circle
-    - user-clock
-    - user-cog
-    - user-edit
-    - user-friends
-    - user-graduate
-    - user-injured
-    - user-lock
-    - user-md
-    - user-minus
-    - user-ninja
-    - user-nurse
-    - user-plus
-    - user-secret
-    - user-shield
-    - user-slash
-    - user-tag
-    - user-tie
-    - user-times
+    - Budget
+    - Budget-alt
+    - Budget-alt-slash
+    - Budget-astronaut
+    - Budget-check
+    - Budget-circle
+    - Budget-clock
+    - Budget-cog
+    - Budget-edit
+    - Budget-friends
+    - Budget-graduate
+    - Budget-injured
+    - Budget-lock
+    - Budget-md
+    - Budget-minus
+    - Budget-ninja
+    - Budget-nurse
+    - Budget-plus
+    - Budget-secret
+    - Budget-shield
+    - Budget-slash
+    - Budget-tag
+    - Budget-tie
+    - Budget-times
     - users
     - users-cog
     - walking

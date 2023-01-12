@@ -31,8 +31,6 @@ class Handler extends ExceptionHandler
      *
      * @param  \Exception  $exception
      * @return void
-     *
-     * @throws \Exception
      */
     public function report(Exception $exception)
     {
@@ -44,25 +42,10 @@ class Handler extends ExceptionHandler
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Exception  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Exception
+     * @return \Illuminate\Http\Response
      */
-
-//    public function render($request, Exception $exception)
-//    {
-//        return parent::render($request, $exception);
-//    }
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-
-        // 404 page with status code 200
-        if ($e instanceof ModelNotFoundException) {
-            return response()->view('errors.404', [], 200);
-        }
-
-
-        return parent::render($request, $e);
-
+        return parent::render($request, $exception);
     }
 }

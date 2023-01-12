@@ -227,7 +227,7 @@
         }
 
         return array;
-      } // to extend defaults with user options
+      } // to extend defaults with Budget options
       // credit: http://stackoverflow.com/questions/27936772/deep-object-merging-in-es6-es7#answer-34749873
 
     }, {
@@ -2444,7 +2444,7 @@
       key: "checkComboSeries",
       value: function checkComboSeries(series) {
         var comboCharts = false;
-        var comboBarCount = 0; // if user specified a type in series too, turn on comboCharts flag
+        var comboBarCount = 0; // if Budget specified a type in series too, turn on comboCharts flag
 
         if (series.length && typeof series[0].type !== 'undefined') {
           comboCharts = true;
@@ -3664,7 +3664,7 @@
             followCursor: false,
             // when disabled, the tooltip will show on top of the series instead of mouse position
             intersect: false,
-            // when enabled, tooltip will only show when user directly hovers over point
+            // when enabled, tooltip will only show when Budget directly hovers over point
             inverseOrder: false,
             custom: undefined,
             fillSeriesColor: false,
@@ -3681,7 +3681,7 @@
               show: true,
               format: 'dd MMM',
               // dd/MM, dd MMM yy, dd MMM yyyy
-              formatter: undefined // a custom user supplied formatter function
+              formatter: undefined // a custom Budget supplied formatter function
 
             },
             y: {
@@ -4084,7 +4084,7 @@
           this.helpers.makeAnnotationDraggable(img, 'images', index);
           img.node.classList.add('apexcharts-resizable-element');
         }
-      } // The addXaxisAnnotation method requires a parent class, and user calling this method externally on the chart instance may not specify parent, hence a different method
+      } // The addXaxisAnnotation method requires a parent class, and Budget calling this method externally on the chart instance may not specify parent, hence a different method
 
     }, {
       key: "addXaxisAnnotationExternal",
@@ -4624,7 +4624,7 @@
         var w = this.w;
         var pStyle = this.getMarkerStyle(seriesIndex);
         var pSize = w.globals.markers.size[seriesIndex];
-        var m = w.config.markers; // discrete markers is an option where user can specify a particular marker with different size and color
+        var m = w.config.markers; // discrete markers is an option where Budget can specify a particular marker with different size and color
 
         if (dataPointIndex !== null && m.discrete.length) {
           m.discrete.map(function (marker) {
@@ -5796,7 +5796,7 @@
         var activeIndex = 0;
 
         if (w.config.series.length > 1) {
-          // active series flag is required to know if user has not deactivated via legend click
+          // active series flag is required to know if Budget has not deactivated via legend click
           var firstActiveSeriesIndex = w.config.series.map(function (series, index) {
             var hasBars = false;
 
@@ -5953,7 +5953,7 @@
           });
           w.globals.dom.Paper.add(titleText);
         }
-      } // When user clicks on legends, the collapsed series is filled with [0,0,0,...,0]
+      } // When Budget clicks on legends, the collapsed series is filled with [0,0,0,...,0]
       // This is because we don't want to alter the series' length as it is used at many places
 
     }, {
@@ -6019,7 +6019,7 @@
         this.barCtx.seriesLen = 0;
         this.barCtx.visibleI = -1; // visible Series
 
-        this.barCtx.visibleItems = 1; // number of visible bars after user zoomed in/out
+        this.barCtx.visibleItems = 1; // number of visible bars after Budget zoomed in/out
 
         for (var sl = 0; sl < series.length; sl++) {
           if (series[sl].length > 0) {
@@ -6434,7 +6434,7 @@
     }
     /** primary draw method which is called on bar object
      * @memberof Bar
-     * @param {array} series - user supplied series values
+     * @param {array} series - Budget supplied series values
      * @param {int} seriesIndex - the index by which series will be drawn on the svg
      * @return {node} element which is supplied to parent chart draw method for appending
      **/
@@ -8163,7 +8163,7 @@
   }();
 
   /**
-   * ApexCharts Config Class for extending user options with pre-defined ApexCharts config.
+   * ApexCharts Config Class for extending Budget options with pre-defined ApexCharts config.
    *
    * @module Config
    **/
@@ -8217,7 +8217,7 @@
 
           if (opts.chart.stacked && opts.chart.stackType === '100%') {
             opts = defaults.stacked100(opts);
-          } // If user has specified a dark theme, make the tooltip dark too
+          } // If Budget has specified a dark theme, make the tooltip dark too
 
 
           this.checkForDarkTheme(window.Apex); // check global window Apex options
@@ -8239,11 +8239,11 @@
 
           newDefaults = Utils.extend(config, chartDefaults);
         } // config should cascade in this fashion
-        // default-config < global-apex-variable-config < user-defined-config
+        // default-config < global-apex-variable-config < Budget-defined-config
         // get GLOBALLY defined options and merge with the default config
 
 
-        var mergedWithDefaultConfig = Utils.extend(newDefaults, window.Apex); // get the merged config and extend with user defined config
+        var mergedWithDefaultConfig = Utils.extend(newDefaults, window.Apex); // get the merged config and extend with Budget defined config
 
         config = Utils.extend(mergedWithDefaultConfig, opts); // some features are not supported. those mismatches should be handled
 
@@ -8278,11 +8278,11 @@
         if (opts.yaxis.constructor !== Array && window.Apex.yaxis && window.Apex.yaxis.constructor !== Array) {
           opts.yaxis = Utils.extend(opts.yaxis, window.Apex.yaxis);
         } // as we can't extend nested object's array with extend, we need to do it first
-        // user can provide either an array or object in yaxis config
+        // Budget can provide either an array or object in yaxis config
 
 
         if (opts.yaxis.constructor !== Array) {
-          // convert the yaxis to array if user supplied object
+          // convert the yaxis to array if Budget supplied object
           opts.yaxis = [Utils.extend(options.yAxis, opts.yaxis)];
         } else {
           opts.yaxis = Utils.extendArray(opts.yaxis, options.yAxis);
@@ -8438,7 +8438,7 @@
 
         if (config.chart.group && config.yaxis[0].labels.minWidth === 0) {
           console.warn('It looks like you have multiple charts in synchronization. You must provide yaxis.labels.minWidth which must be EQUAL for all grouped charts to prevent incorrect behaviour.');
-        } // if user supplied array for stroke width, it will only be applicable to line/area charts, for any other charts, revert back to Number
+        } // if Budget supplied array for stroke width, it will only be applicable to line/area charts, for any other charts, revert back to Number
 
 
         if (Array.isArray(config.stroke.width)) {
@@ -8484,7 +8484,7 @@
         // some way to get x value depending on mouse pointer
 
         gl.seriesYvalues = []; // we will need this when deciding which series
-        // user hovered on
+        // Budget hovered on
 
         gl.labels = [];
         gl.categoryLabels = [];
@@ -8574,11 +8574,11 @@
           animationEnded: false,
           isTouchDevice: 'ontouchstart' in window || navigator.msMaxTouchPoints,
           isDirty: false,
-          // chart has been updated after the initial render. This is different than dataChanged property. isDirty means user manually called some method to update
+          // chart has been updated after the initial render. This is different than dataChanged property. isDirty means Budget manually called some method to update
           isExecCalled: false,
-          // whether user updated the chart through the exec method
+          // whether Budget updated the chart through the exec method
           initialConfig: null,
-          // we will store the first config user has set to go back when user finishes interactions like zooming and come out of it
+          // we will store the first config Budget has set to go back when Budget finishes interactions like zooming and come out of it
           initialSeries: [],
           lastXAxis: [],
           lastYAxis: [],
@@ -8589,27 +8589,27 @@
           timescaleLabels: [],
           // store the timescaleLabels Labels in another variable
           noLabelsProvided: false,
-          // if user didn't provide any chapters/labels or x values, fallback to 1,2,3,4...
+          // if Budget didn't provide any chapters/labels or x values, fallback to 1,2,3,4...
           allSeriesCollapsed: false,
           collapsedSeries: [],
-          // when user collapses a series, it goes into this array
+          // when Budget collapses a series, it goes into this array
           collapsedSeriesIndices: [],
           // this stores the index of the collapsedSeries instead of whole object for quick access
           ancillaryCollapsedSeries: [],
-          // when user collapses an "alwaysVisible" series, it goes into this array
+          // when Budget collapses an "alwaysVisible" series, it goes into this array
           ancillaryCollapsedSeriesIndices: [],
           // this stores the index of the ancillaryCollapsedSeries whose y-axis is always visible
           risingSeries: [],
-          // when user re-opens a collapsed series, it goes here
+          // when Budget re-opens a collapsed series, it goes here
           dataFormatXNumeric: false,
-          // boolean value to indicate user has passed numeric x values
+          // boolean value to indicate Budget has passed numeric x values
           capturedSeriesIndex: -1,
           capturedDataPointIndex: -1,
           selectedDataPoints: [],
           goldenPadding: 35,
           // this value is used at a lot of places for spacing purpose
           invalidLogScale: false,
-          // if a user enabled log scale but the data provided is not valid to generate a log scale, turn on this flag
+          // if a Budget enabled log scale but the data provided is not valid to generate a log scale, turn on this flag
           ignoreYAxisIndexes: [],
           // when series are being collapsed in multiple y axes, ignore certain index
           yAxisSameScaleIndices: [],
@@ -8654,10 +8654,10 @@
           isDataXYZ: false,
           // bool: data was provided in a {[x,y,z]} pattern
           resized: false,
-          // bool: user has resized
+          // bool: Budget has resized
           resizeTimer: null,
           // timeout function to make a small delay before
-          // drawing when user resized
+          // drawing when Budget resized
           comboCharts: false,
           // bool: whether it's a combination of line/column
           dataChanged: false,
@@ -8679,7 +8679,7 @@
           easing: null,
           // function: animation effect to apply
           zoomed: false,
-          // whether user has zoomed or not
+          // whether Budget has zoomed or not
           gridWidth: 0,
           // drawable width of actual graphs (series paths)
           gridHeight: 0,
@@ -8725,7 +8725,7 @@
   }();
 
   /**
-   * ApexCharts Base Class for extending user options with pre-defined ApexCharts config.
+   * ApexCharts Base Class for extending Budget options with pre-defined ApexCharts config.
    *
    * @module Base
    **/
@@ -8889,7 +8889,7 @@
           var isXDate = !isXArr && !!dt.isValidDate(ser[activeI].data[_j2].x.toString());
 
           if (isXString || isXDate) {
-            // user supplied '01/01/2017' or a date string (a JS date object is not supported)
+            // Budget supplied '01/01/2017' or a date string (a JS date object is not supported)
             if (isXString || cnf.xaxis.convertedCatToNumeric) {
               var isRangeColumn = gl.isBarHorizontal && gl.isRangeData;
 
@@ -9123,7 +9123,7 @@
         var handleDates = function handleDates() {
           for (var j = 0; j < xlabels.length; j++) {
             if (typeof xlabels[j] === 'string') {
-              // user provided date strings
+              // Budget provided date strings
               var isDate = dt.isValidDate(xlabels[j]);
 
               if (isDate) {
@@ -9132,7 +9132,7 @@
                 throw new Error('You have provided invalid Date format. Please provide a valid JavaScript Date');
               }
             } else {
-              // user provided timestamps
+              // Budget provided timestamps
               if (String(xlabels[j]).length !== 13) {
                 throw new Error('Please provide a valid JavaScript timestamp');
               } else {
@@ -9177,7 +9177,7 @@
             }
           } else {
             if (cnf.xaxis.type === 'datetime') {
-              // user didn't supplied [{x,y}] or [[x,y]], but single array in data.
+              // Budget didn't supplied [{x,y}] or [[x,y]], but single array in data.
               // Also labels/chapters were supplied differently
               gl.isXNumeric = true;
               handleDates();
@@ -9227,9 +9227,9 @@
       }
       /** User possibly set string chapters in xaxis.chapters or labels prop
        * Or didn't set xaxis labels at all - in which case we manually do it.
-       * If user passed series data as [[3, 2], [4, 5]] or [{ x: 3, y: 55 }],
+       * If Budget passed series data as [[3, 2], [4, 5]] or [{ x: 3, y: 55 }],
        * this shouldn't be called
-       * @param {array} ser - the series which user passed to the config
+       * @param {array} ser - the series which Budget passed to the config
        */
 
     }, {
@@ -9239,13 +9239,13 @@
         var gl = this.w.globals;
 
         if (cnf.xaxis.categories.length > 0) {
-          // user provided labels in xaxis.category prop
+          // Budget provided labels in xaxis.category prop
           gl.labels = cnf.xaxis.categories;
         } else if (cnf.labels.length > 0) {
-          // user provided labels in labels props
+          // Budget provided labels in labels props
           gl.labels = cnf.labels.slice();
         } else if (this.fallbackToCategory) {
-          // user provided labels in x prop in [{ x: 3, y: 55 }] data, and those labels are already stored in gl.labels[0], so just re-arrange the gl.labels array
+          // Budget provided labels in x prop in [{ x: 3, y: 55 }] data, and those labels are already stored in gl.labels[0], so just re-arrange the gl.labels array
           gl.labels = gl.labels[0];
 
           if (gl.seriesRangeBarTimeline.length) {
@@ -9275,7 +9275,7 @@
       key: "_generateExternalLabels",
       value: function _generateExternalLabels(ser) {
         var gl = this.w.globals;
-        var cnf = this.w.config; // user didn't provided any labels, fallback to 1-2-3-4-5
+        var cnf = this.w.config; // Budget didn't provided any labels, fallback to 1-2-3-4-5
 
         var labelArr = [];
 
@@ -9295,7 +9295,7 @@
 
           gl.isXNumeric = true;
         } // no series to pull labels from, put a 0-10 series
-        // possibly, user collapsed all series. Hence we can't work with above calc
+        // possibly, Budget collapsed all series. Hence we can't work with above calc
 
 
         if (labelArr.length === 0) {
@@ -9315,11 +9315,11 @@
           gl.categoryLabels = labelArr.map(function (l) {
             return cnf.xaxis.labels.formatter(l);
           });
-        } // Turn on this global flag to indicate no labels were provided by user
+        } // Turn on this global flag to indicate no labels were provided by Budget
 
 
         gl.noLabelsProvided = true;
-      } // Segregate user provided data into appropriate vars
+      } // Segregate Budget provided data into appropriate vars
 
     }, {
       key: "parseData",
@@ -9341,7 +9341,7 @@
           this.parseDataNonAxisCharts(ser);
         }
 
-        this.coreUtils.getLargestSeries(); // set Null values to 0 in all series when user hides/shows some series
+        this.coreUtils.getLargestSeries(); // set Null values to 0 in all series when Budget hides/shows some series
 
         if (cnf.chart.type === 'bar' && cnf.chart.stacked) {
           var series = new Series(this.ctx);
@@ -9412,7 +9412,7 @@
 
         if (w.config.xaxis.type === 'datetime') {
           if (w.config.xaxis.labels.formatter === undefined) {
-            // if user has not specified a custom formatter, use the default tooltip.x.format
+            // if Budget has not specified a custom formatter, use the default tooltip.x.format
             if (w.config.tooltip.x.formatter === undefined) {
               var datetimeObj = new DateTime(this.ctx);
               return datetimeObj.formatDate(datetimeObj.getDate(val), w.config.tooltip.x.format);
@@ -9523,7 +9523,7 @@
 
         if (w.config.tooltip.z.formatter !== undefined) {
           w.globals.ttZFormatter = w.config.tooltip.z.formatter;
-        } // legend formatter - if user wants to append any global values of series to legend text
+        } // legend formatter - if Budget wants to append any global values of series to legend text
 
 
         if (w.config.legend.formatter !== undefined) {
@@ -10942,7 +10942,7 @@
         }
 
         if (yMin > yMax) {
-          // if somehow due to some wrong config, user sent max less than min,
+          // if somehow due to some wrong config, Budget sent max less than min,
           // adjust the min/max again
           console.warn('axis.min cannot be greater than axis.max');
           yMax = yMin + 0.1;
@@ -11121,7 +11121,7 @@
           gl.yAxisScale[index] = this.logarithmicScale(index, minY, maxY, y.tickAmount ? y.tickAmount : Math.floor(Math.log10(maxY)));
         } else {
           if (maxY === -Number.MAX_VALUE || !Utils.isNumber(maxY)) {
-            // no data in the chart. Either all series collapsed or user passed a blank array
+            // no data in the chart. Either all series collapsed or Budget passed a blank array
             gl.yAxisScale[index] = this.linearScale(0, 5, 5);
           } else {
             // there is some data. Turn off the allSeriesCollapsed flag
@@ -11147,7 +11147,7 @@
         var diff = Math.abs(maxX - minX);
 
         if (maxX === -Number.MAX_VALUE || !Utils.isNumber(maxX)) {
-          // no data in the chart. Either all series collapsed or user passed a blank array
+          // no data in the chart. Either all series collapsed or Budget passed a blank array
           gl.xAxisScale = this.linearScale(0, 5, 5);
         } else {
           gl.xAxisScale = this.niceScale(minX, maxX, x.tickAmount ? x.tickAmount : diff < 5 && diff > 1 ? diff + 1 : 5, 0);
@@ -11586,7 +11586,7 @@
         }
 
         cnf.yaxis.forEach(function (yaxe, index) {
-          // override all min/max values by user defined values (y axis)
+          // override all min/max values by Budget defined values (y axis)
           if (yaxe.max !== undefined) {
             if (typeof yaxe.max === 'number') {
               gl.maxYArr[index] = yaxe.max;
@@ -11608,7 +11608,7 @@
 
             gl.minY = gl.minYArr[index];
           }
-        }); // for horizontal bar charts, we need to check xaxis min/max as user may have specified there
+        }); // for horizontal bar charts, we need to check xaxis min/max as Budget may have specified there
 
         if (gl.isBarHorizontal) {
           var minmax = ['min', 'max'];
@@ -11704,7 +11704,7 @@
             ticks = cnf.xaxis.tickAmount;
           }
 
-          gl.xTickAmount = ticks; // override all min/max values by user defined values (x axis)
+          gl.xTickAmount = ticks; // override all min/max values by Budget defined values (x axis)
 
           if (cnf.xaxis.max !== undefined && typeof cnf.xaxis.max === 'number') {
             gl.maxX = cnf.xaxis.max;
@@ -12272,7 +12272,7 @@
         var yaxis = w.globals.dom.baseEl.getElementsByClassName("apexcharts-yaxis");
         yaxis = Utils.listToArray(yaxis);
         yaxis.forEach(function (y, index) {
-          var yaxe = w.config.yaxis[index]; // proceed only if user has specified alignment
+          var yaxe = w.config.yaxis[index]; // proceed only if Budget has specified alignment
 
           if (yaxe.labels.align !== undefined) {
             var yAxisInner = w.globals.dom.baseEl.querySelector(".apexcharts-yaxis[rel='".concat(index, "'] .apexcharts-yaxis-texts-g"));
@@ -12418,7 +12418,7 @@
         if (e.type === 'mousedown') {
           var elAnnos = w.globals.dom.Paper.select('.apexcharts-resizable-element').members;
           Array.prototype.forEach.call(elAnnos, function (el) {
-            // any shape annotations that might have selected by user for resizing, should be deselected
+            // any shape annotations that might have selected by Budget for resizing, should be deselected
             if (!e.target.classList.contains('apexcharts-resizable-element') && !e.target.classList.contains('svg_select_points')) {
               el.selectize(false);
             }
@@ -12444,12 +12444,12 @@
     _createClass(Localization, [{
       key: "setCurrentLocaleValues",
       value: function setCurrentLocaleValues(localeName) {
-        var locales = this.w.config.chart.locales; // check if user has specified locales in global Apex variable
+        var locales = this.w.config.chart.locales; // check if Budget has specified locales in global Apex variable
         // if yes - then extend those with local chart's locale
 
         if (window.Apex.chart && window.Apex.chart.locales && window.Apex.chart.locales.length > 0) {
           locales = this.w.config.chart.locales.concat(window.Apex.chart.locales);
-        } // find the locale from the array of locales which user has set (either by chart.defaultLocale or by calling setLocale() method.)
+        } // find the locale from the array of locales which Budget has set (either by chart.defaultLocale or by calling setLocale() method.)
 
 
         var selectedLocale = locales.filter(function (c) {
@@ -12629,7 +12629,7 @@
       this.ctx = ctx;
       this.w = ctx.w;
     } // the opts parameter if not null has to be set overriding everything
-    // as the opts is set by user externally
+    // as the opts is set by Budget externally
 
 
     _createClass(Responsive, [{
@@ -12727,7 +12727,7 @@
         if (w.config.colors === undefined) {
           w.globals.colors = this.predefined();
         } else {
-          w.globals.colors = w.config.colors; // if user provided a function in colors, we need to eval here
+          w.globals.colors = w.config.colors; // if Budget provided a function in colors, we need to eval here
 
           if (Array.isArray(w.config.colors) && w.config.colors.length > 0 && typeof w.config.colors[0] === 'function') {
             w.globals.colors = w.config.series.map(function (s, i) {
@@ -12779,7 +12779,7 @@
           w.globals.colors = monoArr.slice();
         }
 
-        var defaultColors = w.globals.colors.slice(); // if user specfied less colors than no. of series, push the same colors again
+        var defaultColors = w.globals.colors.slice(); // if Budget specfied less colors than no. of series, push the same colors again
 
         this.pushExtraColors(w.globals.colors);
         var colorTypes = ['fill', 'stroke'];
@@ -13201,7 +13201,7 @@
         }); //  get the longest string from the labels array and also apply label formatter to it
 
         var val = labels.reduce(function (a, b) {
-          // if undefined, maybe user didn't pass the datetime(x) values
+          // if undefined, maybe Budget didn't pass the datetime(x) values
           if (typeof a === 'undefined') {
             console.error('You have possibly supplied invalid Date format. Please supply a valid JavaScript Date');
             return 0;
@@ -13265,7 +13265,7 @@
               gl.skipFirstTimelinelabel = true;
             }
           } else if (xtype === 'datetime') {
-            // If user has enabled DateTime, but uses own's formatter
+            // If Budget has enabled DateTime, but uses own's formatter
             if (_this.dCtx.gridPad.right < lbWidth && !gl.rotateXLabels) {
               gl.skipLastTimelinelabel = true;
             }
@@ -13335,14 +13335,14 @@
 
           if (!axesUtils.isYAxisHidden(index) && yaxe.labels.show && yS.result.length) {
             var lbFormatter = w.globals.yLabelFormatters[index];
-            var longestStr = String(yS.niceMin).length > String(yS.niceMax).length ? yS.niceMin : yS.niceMax; // the second parameter -1 is the index of tick which user can use in the formatter
+            var longestStr = String(yS.niceMin).length > String(yS.niceMax).length ? yS.niceMin : yS.niceMax; // the second parameter -1 is the index of tick which Budget can use in the formatter
 
             var val = lbFormatter(longestStr, {
               seriesIndex: index,
               dataPointIndex: -1,
               w: w
             });
-            var valArr = val; // if user has specified a custom formatter, and the result is null or empty, we need to discard the formatter and take the value as it is.
+            var valArr = val; // if Budget has specified a custom formatter, and the result is null or empty, we need to discard the formatter and take the value as it is.
 
             if (typeof val === 'undefined' || val.length === 0) {
               val = longestStr;
@@ -13625,7 +13625,7 @@
           this.setDimensionsForNonAxisCharts();
         }
 
-        this.dimGrid.gridPadFortitleSubtitle(); // after calculating everything, apply padding set by user
+        this.dimGrid.gridPadFortitleSubtitle(); // after calculating everything, apply padding set by Budget
 
         gl.gridHeight = gl.gridHeight - this.gridPad.top - this.gridPad.bottom;
         gl.gridWidth = gl.gridWidth - this.gridPad.left - this.gridPad.right - this.xPadRight - this.xPadLeft;
@@ -14833,7 +14833,7 @@
             });
           }
 
-          w.globals.zoomed = false; // if user has some series collapsed before hitting zoom reset button,
+          w.globals.zoomed = false; // if Budget has some series collapsed before hitting zoom reset button,
           // those series should stay collapsed
 
           var series = ch.ctx.series.emptyCollapsedSeries(Utils.clone(w.globals.initialSeries));
@@ -15005,7 +15005,7 @@
           var _gridRectDim = me.gridRect.getBoundingClientRect();
 
           if (me.w.globals.mousedown) {
-            // user released the drag, now do all the calculations
+            // Budget released the drag, now do all the calculations
             me.endX = me.clientX - _gridRectDim.left;
             me.endY = me.clientY - _gridRectDim.top;
             me.dragX = Math.abs(me.endX - me.startX);
@@ -15112,7 +15112,7 @@
           var scalingAttrs = {
             transform: 'translate(' + translateX + ', ' + translateY + ')'
           }; // change styles based on zoom or selection
-          // zoom is Enabled and user has dragged, so draw blue rect
+          // zoom is Enabled and Budget has dragged, so draw blue rect
 
           if (w.globals.zoomEnabled && this.dragged) {
             if (width < 0) width = 1; // fixes apexcharts.js#1168
@@ -15178,10 +15178,10 @@
         var selectionRect = {};
 
         if (Math.abs(selectionWidth + startX) > w.globals.gridWidth) {
-          // user dragged the mouse outside drawing area to the right
+          // Budget dragged the mouse outside drawing area to the right
           selectionWidth = w.globals.gridWidth - startX;
         } else if (me.clientX - gridRectDim.left < 0) {
-          // user dragged the mouse outside drawing area to the left
+          // Budget dragged the mouse outside drawing area to the left
           selectionWidth = startX;
         } // inverse selection X
 
@@ -15317,8 +15317,8 @@
           if (w.globals.zoomEnabled) {
             var yaxis = Utils.clone(w.globals.initialConfig.yaxis);
             var xaxis = Utils.clone(w.globals.initialConfig.xaxis);
-            w.globals.zoomed = true; // before zooming in/out, store the last yaxis and xaxis range, so that when user hits the RESET button, we get the original range
-            // also - make sure user is not already zoomed in/out - otherwise we will store zoomed values in lastAxis
+            w.globals.zoomed = true; // before zooming in/out, store the last yaxis and xaxis range, so that when Budget hits the RESET button, we get the original range
+            // also - make sure Budget is not already zoomed in/out - otherwise we will store zoomed values in lastAxis
             // DEAD code - the below condition will never run now as zoomed is made false above
 
             if (!w.globals.zoomed) {
@@ -15554,7 +15554,7 @@
      ** This function will return both capturedseries index as well as inner index of that series
      * @memberof Utils
      * @param {object}
-     * - hoverArea = the rect on which user hovers
+     * - hoverArea = the rect on which Budget hovers
      * - elGrid = dimensions of the hover rect (it can be different than hoverarea)
      */
 
@@ -16367,7 +16367,7 @@
         }
       }
       /**
-       ** AxisTooltip is the small rectangle which appears on x axis with x value, when user moves
+       ** AxisTooltip is the small rectangle which appears on x axis with x value, when Budget moves
        * @memberof Position
        * @param {int} - cx = point's x position, wherever point's x is, you need to move
        */
@@ -17361,7 +17361,7 @@
         }
 
         if (w.config.markers.size === 0 || w.globals.markers.largestSize === 0) {
-          // when user don't want to show points all the time, but only on when hovering on series
+          // when Budget don't want to show points all the time, but only on when hovering on series
           this.marker.drawDynamicPoints(this);
         } // no visible series, exit
 
@@ -17587,7 +17587,7 @@
         var _this = this;
 
         var chartGroups = [];
-        var w = this.w; // if user has more than one charts in group, we need to sync
+        var w = this.w; // if Budget has more than one charts in group, we need to sync
 
         if (w.config.chart.group) {
           chartGroups = this.ctx.getGroupedCharts();
@@ -20806,7 +20806,7 @@
         } else {
           // the first value in the current series is null
           if (w.config.chart.stacked && i > 0 && typeof series[i][0] === 'undefined') {
-            // check for undefined value (undefined value will occur when we clear the series while user clicks on legend to hide serieses)
+            // check for undefined value (undefined value will occur when we clear the series while Budget clicks on legend to hide serieses)
             for (var s = i - 1; s >= 0; s--) {
               // for loop to get to 1st previous value until we get it
               if (series[s][0] !== null && typeof series[s][0] !== 'undefined') {
@@ -22312,7 +22312,7 @@
           i: []
         };
         gl.series.map(function (series, st) {
-          // if user has specified a particular type for particular series
+          // if Budget has specified a particular type for particular series
           if (typeof ser[st].type !== 'undefined') {
             if (ser[st].type === 'column' || ser[st].type === 'bar') {
               if (gl.series.length > 1 && cnf.plotOptions.bar.horizontal) {
@@ -22339,7 +22339,7 @@
               candlestickSeries.series.push(series);
               candlestickSeries.i.push(st);
             } else {
-              // user has specified type, but it is not valid (other than line/area/column)
+              // Budget has specified type, but it is not valid (other than line/area/column)
               console.warn('You have specified an unrecognized chart type. Available types for this propery are line/area/column/bar/scatter/bubble');
             }
 
@@ -22576,7 +22576,7 @@
     }, {
       key: "isMultipleY",
       value: function isMultipleY() {
-        // user has supplied an array in yaxis property. So, turn on multipleYAxis flag
+        // Budget has supplied an array in yaxis property. So, turn on multipleYAxis flag
         if (this.w.config.yaxis.constructor === Array && this.w.config.yaxis.length > 1) {
           this.w.globals.isMultipleYAxis = true;
           return true;
@@ -22644,8 +22644,8 @@
 
         if (!w.config.chart.brush.enabled) {
           return;
-        } // if user has not defined a custom function for selection - we handle the brush chart
-        // otherwise we leave it to the user to define the functionality for selection
+        } // if Budget has not defined a custom function for selection - we handle the brush chart
+        // otherwise we leave it to the Budget to define the functionality for selection
 
 
         if (typeof w.config.chart.events.selection !== 'function') {
@@ -22730,7 +22730,7 @@
         }
 
         if (this.ctx.w.globals.isExecCalled) {
-          // If the user called exec method, we don't want to get grouped charts as user specifically provided a chartID to update
+          // If the Budget called exec method, we don't want to get grouped charts as Budget specifically provided a chartID to update
           charts = [this.ctx];
           this.ctx.w.globals.isExecCalled = false;
         }
@@ -22760,7 +22760,7 @@
             w.config = Utils.extend(w.config, options);
 
             if (overwriteInitialConfig) {
-              // we need to forget the lastXAxis and lastYAxis is user forcefully overwriteInitialConfig. If we do not do this, and next time when user zooms the chart after setting yaxis.min/max or xaxis.min/max - the stored lastXAxis will never allow the chart to use the updated min/max by user.
+              // we need to forget the lastXAxis and lastYAxis is Budget forcefully overwriteInitialConfig. If we do not do this, and next time when Budget zooms the chart after setting yaxis.min/max or xaxis.min/max - the stored lastXAxis will never allow the chart to use the updated min/max by Budget.
               w.globals.lastXAxis = [];
               w.globals.lastYAxis = []; // After forgetting lastAxes, we need to restore the new config in initialConfig/initialSeries
 
@@ -22902,8 +22902,8 @@
       }
       /**
        * This function reverts the yaxis and xaxis min/max values to what it was when the chart was defined.
-       * This function fixes an important bug where a user might load a new series after zooming in/out of previous series which resulted in wrong min/max
-       * Also, this should never be called internally on zoom/pan - the reset should only happen when user calls the updateSeries() function externally
+       * This function fixes an important bug where a Budget might load a new series after zooming in/out of previous series which resulted in wrong min/max
+       * Also, this should never be called internally on zoom/pan - the reset should only happen when Budget calls the updateSeries() function externally
        */
 
     }, {
@@ -22916,13 +22916,13 @@
         w.config.xaxis.max = w.globals.lastXAxis.max;
         w.config.yaxis.map(function (yaxe, index) {
           if (w.globals.zoomed) {
-            // user has zoomed, check the last yaxis
+            // Budget has zoomed, check the last yaxis
             if (typeof w.globals.lastYAxis[index] !== 'undefined') {
               yaxe.min = w.globals.lastYAxis[index].min;
               yaxe.max = w.globals.lastYAxis[index].max;
             }
           } else {
-            // user hasn't zoomed, check the original yaxis
+            // Budget hasn't zoomed, check the original yaxis
             if (typeof _this3.ctx.opts.yaxis[index] !== 'undefined') {
               yaxe.min = _this3.ctx.opts.yaxis[index].min;
               yaxe.max = _this3.ctx.opts.yaxis[index].max;
@@ -24196,7 +24196,7 @@
             eased: eased,
             fx: this,
             situation: this.situation
-          }); // the user may call stop or finish in the during callback
+          }); // the Budget may call stop or finish in the during callback
           // so make sure that we still have a valid situation
 
           if (!this.situation) {
@@ -24216,7 +24216,7 @@
             });
 
             if (!this.situations.length) {
-              this.target().fire('allfinished'); // Recheck the length since the user may call animate in the afterAll callback
+              this.target().fire('allfinished'); // Recheck the length since the Budget may call animate in the afterAll callback
 
               if (!this.situations.length) {
                 this.target().off('.fx'); // there shouldnt be any binding left, but to make sure...
@@ -26480,7 +26480,7 @@
         },
         // Merge effect
         merge: function() {
-          //pass the array of arguments to the constructor because we dont know if the user gave us an array as the first arguemnt or wether they listed the effects in the arguments
+          //pass the array of arguments to the constructor because we dont know if the Budget gave us an array as the first arguemnt or wether they listed the effects in the arguments
           var args = [undefined];
           for(var i in arguments) args.push(arguments[i]);
           return this.put(new (SVG.MergeEffect.bind.apply(SVG.MergeEffect,args)))
@@ -27466,7 +27466,7 @@
       this.el.on('touchstart.drag', function(e){ _this.start(e); });
     };
 
-    // transforms one point from screen to user coords
+    // transforms one point from screen to Budget coords
     DragHandler.prototype.transformPoint = function(event, offset){
         event = event || window.event;
         var touches = event.changedTouches && event.changedTouches[0] || event;
@@ -28603,7 +28603,7 @@
     }
   }
 
-  var css = ".apexcharts-canvas {\n  position: relative;\n  user-select: none;\n  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */\n}\n\n\n/* scrollbar is not visible by default for legend, hence forcing the visibility */\n.apexcharts-canvas ::-webkit-scrollbar {\n  -webkit-appearance: none;\n  width: 6px;\n}\n\n.apexcharts-canvas ::-webkit-scrollbar-thumb {\n  border-radius: 4px;\n  background-color: rgba(0, 0, 0, .5);\n  box-shadow: 0 0 1px rgba(255, 255, 255, .5);\n  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);\n}\n\n.apexcharts-canvas.apexcharts-theme-dark {\n  background: #424242;\n}\n\n.apexcharts-inner {\n  position: relative;\n}\n\n.apexcharts-text tspan {\n  font-family: inherit;\n}\n\n.legend-mouseover-inactive {\n  transition: 0.15s ease all;\n  opacity: 0.20;\n}\n\n.apexcharts-series-collapsed {\n  opacity: 0;\n}\n\n.apexcharts-tooltip {\n  border-radius: 5px;\n  box-shadow: 2px 2px 6px -4px #999;\n  cursor: default;\n  font-size: 14px;\n  left: 62px;\n  opacity: 0;\n  pointer-events: none;\n  position: absolute;\n  top: 20px;\n  overflow: hidden;\n  white-space: nowrap;\n  z-index: 12;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-tooltip.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-tooltip.apexcharts-theme-light {\n  border: 1px solid #e3e3e3;\n  background: rgba(255, 255, 255, 0.96);\n}\n\n.apexcharts-tooltip.apexcharts-theme-dark {\n  color: #fff;\n  background: rgba(30, 30, 30, 0.8);\n}\n\n.apexcharts-tooltip * {\n  font-family: inherit;\n}\n\n\n.apexcharts-tooltip-title {\n  padding: 6px;\n  font-size: 15px;\n  margin-bottom: 4px;\n}\n\n.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {\n  background: #ECEFF1;\n  border-bottom: 1px solid #ddd;\n}\n\n.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {\n  background: rgba(0, 0, 0, 0.7);\n  border-bottom: 1px solid #333;\n}\n\n.apexcharts-tooltip-text-value,\n.apexcharts-tooltip-text-z-value {\n  display: inline-block;\n  font-weight: 600;\n  margin-left: 5px;\n}\n\n.apexcharts-tooltip-text-z-label:empty,\n.apexcharts-tooltip-text-z-value:empty {\n  display: none;\n}\n\n.apexcharts-tooltip-text-value,\n.apexcharts-tooltip-text-z-value {\n  font-weight: 600;\n}\n\n.apexcharts-tooltip-marker {\n  width: 12px;\n  height: 12px;\n  position: relative;\n  top: 0px;\n  margin-right: 10px;\n  border-radius: 50%;\n}\n\n.apexcharts-tooltip-series-group {\n  padding: 0 10px;\n  display: none;\n  text-align: left;\n  justify-content: left;\n  align-items: center;\n}\n\n.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {\n  opacity: 1;\n}\n\n.apexcharts-tooltip-series-group.apexcharts-active,\n.apexcharts-tooltip-series-group:last-child {\n  padding-bottom: 4px;\n}\n\n.apexcharts-tooltip-series-group-hidden {\n  opacity: 0;\n  height: 0;\n  line-height: 0;\n  padding: 0 !important;\n}\n\n.apexcharts-tooltip-y-group {\n  padding: 6px 0 5px;\n}\n\n.apexcharts-tooltip-candlestick {\n  padding: 4px 8px;\n}\n\n.apexcharts-tooltip-candlestick>div {\n  margin: 4px 0;\n}\n\n.apexcharts-tooltip-candlestick span.value {\n  font-weight: bold;\n}\n\n.apexcharts-tooltip-rangebar {\n  padding: 5px 8px;\n}\n\n.apexcharts-tooltip-rangebar .category {\n  font-weight: 600;\n  color: #777;\n}\n\n.apexcharts-tooltip-rangebar .series-name {\n  font-weight: bold;\n  display: block;\n  margin-bottom: 5px;\n}\n\n.apexcharts-xaxistooltip {\n  opacity: 0;\n  padding: 9px 10px;\n  pointer-events: none;\n  color: #373d3f;\n  font-size: 13px;\n  text-align: center;\n  border-radius: 2px;\n  position: absolute;\n  z-index: 10;\n  background: #ECEFF1;\n  border: 1px solid #90A4AE;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-xaxistooltip.apexcharts-theme-dark {\n  background: rgba(0, 0, 0, 0.7);\n  border: 1px solid rgba(0, 0, 0, 0.5);\n  color: #fff;\n}\n\n.apexcharts-xaxistooltip:after,\n.apexcharts-xaxistooltip:before {\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.apexcharts-xaxistooltip:after {\n  border-color: rgba(236, 239, 241, 0);\n  border-width: 6px;\n  margin-left: -6px;\n}\n\n.apexcharts-xaxistooltip:before {\n  border-color: rgba(144, 164, 174, 0);\n  border-width: 7px;\n  margin-left: -7px;\n}\n\n.apexcharts-xaxistooltip-bottom:after,\n.apexcharts-xaxistooltip-bottom:before {\n  bottom: 100%;\n}\n\n.apexcharts-xaxistooltip-top:after,\n.apexcharts-xaxistooltip-top:before {\n  top: 100%;\n}\n\n.apexcharts-xaxistooltip-bottom:after {\n  border-bottom-color: #ECEFF1;\n}\n\n.apexcharts-xaxistooltip-bottom:before {\n  border-bottom-color: #90A4AE;\n}\n\n.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {\n  border-bottom-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {\n  border-bottom-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-top:after {\n  border-top-color: #ECEFF1\n}\n\n.apexcharts-xaxistooltip-top:before {\n  border-top-color: #90A4AE;\n}\n\n.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {\n  border-top-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {\n  border-top-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-yaxistooltip {\n  opacity: 0;\n  padding: 4px 10px;\n  pointer-events: none;\n  color: #373d3f;\n  font-size: 13px;\n  text-align: center;\n  border-radius: 2px;\n  position: absolute;\n  z-index: 10;\n  background: #ECEFF1;\n  border: 1px solid #90A4AE;\n}\n\n.apexcharts-yaxistooltip.apexcharts-theme-dark {\n  background: rgba(0, 0, 0, 0.7);\n  border: 1px solid rgba(0, 0, 0, 0.5);\n  color: #fff;\n}\n\n.apexcharts-yaxistooltip:after,\n.apexcharts-yaxistooltip:before {\n  top: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.apexcharts-yaxistooltip:after {\n  border-color: rgba(236, 239, 241, 0);\n  border-width: 6px;\n  margin-top: -6px;\n}\n\n.apexcharts-yaxistooltip:before {\n  border-color: rgba(144, 164, 174, 0);\n  border-width: 7px;\n  margin-top: -7px;\n}\n\n.apexcharts-yaxistooltip-left:after,\n.apexcharts-yaxistooltip-left:before {\n  left: 100%;\n}\n\n.apexcharts-yaxistooltip-right:after,\n.apexcharts-yaxistooltip-right:before {\n  right: 100%;\n}\n\n.apexcharts-yaxistooltip-left:after {\n  border-left-color: #ECEFF1;\n}\n\n.apexcharts-yaxistooltip-left:before {\n  border-left-color: #90A4AE;\n}\n\n.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {\n  border-left-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {\n  border-left-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-right:after {\n  border-right-color: #ECEFF1;\n}\n\n.apexcharts-yaxistooltip-right:before {\n  border-right-color: #90A4AE;\n}\n\n.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {\n  border-right-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {\n  border-right-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip.apexcharts-active {\n  opacity: 1;\n}\n\n.apexcharts-yaxistooltip-hidden {\n  display: none;\n}\n\n.apexcharts-xcrosshairs,\n.apexcharts-ycrosshairs {\n  pointer-events: none;\n  opacity: 0;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-xcrosshairs.apexcharts-active,\n.apexcharts-ycrosshairs.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-ycrosshairs-hidden {\n  opacity: 0;\n}\n\n.apexcharts-selection-rect {\n  cursor: move;\n}\n\n.svg_select_boundingRect, .svg_select_points_rot {\n  pointer-events: none;\n  opacity: 0;\n  visibility: hidden;\n}\n.apexcharts-selection-rect + g .svg_select_boundingRect,\n.apexcharts-selection-rect + g .svg_select_points_rot {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.apexcharts-selection-rect + g .svg_select_points_l,\n.apexcharts-selection-rect + g .svg_select_points_r {\n  cursor: ew-resize;\n  opacity: 1;\n  visibility: visible;\n}\n\n.svg_select_points {\n  fill: #efefef;\n  stroke: #333;\n  rx: 2;\n}\n\n.apexcharts-canvas.apexcharts-zoomable .hovering-zoom {\n  cursor: crosshair\n}\n\n.apexcharts-canvas.apexcharts-zoomable .hovering-pan {\n  cursor: move\n}\n\n.apexcharts-zoom-icon,\n.apexcharts-zoomin-icon,\n.apexcharts-zoomout-icon,\n.apexcharts-reset-icon,\n.apexcharts-pan-icon,\n.apexcharts-selection-icon,\n.apexcharts-menu-icon,\n.apexcharts-toolbar-custom-icon {\n  cursor: pointer;\n  width: 20px;\n  height: 20px;\n  line-height: 24px;\n  color: #6E8192;\n  text-align: center;\n}\n\n.apexcharts-zoom-icon svg,\n.apexcharts-zoomin-icon svg,\n.apexcharts-zoomout-icon svg,\n.apexcharts-reset-icon svg,\n.apexcharts-menu-icon svg {\n  fill: #6E8192;\n}\n\n.apexcharts-selection-icon svg {\n  fill: #444;\n  transform: scale(0.76)\n}\n\n.apexcharts-theme-dark .apexcharts-zoom-icon svg,\n.apexcharts-theme-dark .apexcharts-zoomin-icon svg,\n.apexcharts-theme-dark .apexcharts-zoomout-icon svg,\n.apexcharts-theme-dark .apexcharts-reset-icon svg,\n.apexcharts-theme-dark .apexcharts-pan-icon svg,\n.apexcharts-theme-dark .apexcharts-selection-icon svg,\n.apexcharts-theme-dark .apexcharts-menu-icon svg,\n.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {\n  fill: #f3f4f5;\n}\n\n.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,\n.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,\n.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {\n  fill: #008FFB;\n}\n\n.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,\n.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,\n.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,\n.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,\n.apexcharts-theme-light .apexcharts-reset-icon:hover svg,\n.apexcharts-theme-light .apexcharts-menu-icon:hover svg {\n  fill: #333;\n}\n\n.apexcharts-selection-icon,\n.apexcharts-menu-icon {\n  position: relative;\n}\n\n.apexcharts-reset-icon {\n  margin-left: 5px;\n}\n\n.apexcharts-zoom-icon,\n.apexcharts-reset-icon,\n.apexcharts-menu-icon {\n  transform: scale(0.85);\n}\n\n.apexcharts-zoomin-icon,\n.apexcharts-zoomout-icon {\n  transform: scale(0.7)\n}\n\n.apexcharts-zoomout-icon {\n  margin-right: 3px;\n}\n\n.apexcharts-pan-icon {\n  transform: scale(0.62);\n  position: relative;\n  left: 1px;\n  top: 0px;\n}\n\n.apexcharts-pan-icon svg {\n  fill: #fff;\n  stroke: #6E8192;\n  stroke-width: 2;\n}\n\n.apexcharts-pan-icon.apexcharts-selected svg {\n  stroke: #008FFB;\n}\n\n.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {\n  stroke: #333;\n}\n\n.apexcharts-toolbar {\n  position: absolute;\n  z-index: 11;\n  max-width: 176px;\n  text-align: right;\n  border-radius: 3px;\n  padding: 0px 6px 2px 6px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.apexcharts-menu {\n  background: #fff;\n  position: absolute;\n  top: 100%;\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  padding: 3px;\n  right: 10px;\n  opacity: 0;\n  min-width: 110px;\n  transition: 0.15s ease all;\n  pointer-events: none;\n}\n\n.apexcharts-menu.apexcharts-menu-open {\n  opacity: 1;\n  pointer-events: all;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-menu-item {\n  padding: 6px 7px;\n  font-size: 12px;\n  cursor: pointer;\n}\n\n.apexcharts-theme-light .apexcharts-menu-item:hover {\n  background: #eee;\n}\n\n.apexcharts-theme-dark .apexcharts-menu {\n  background: rgba(0, 0, 0, 0.7);\n  color: #fff;\n}\n\n@media screen and (min-width: 768px) {\n  .apexcharts-canvas:hover .apexcharts-toolbar {\n    opacity: 1;\n  }\n}\n\n.apexcharts-datalabel.apexcharts-element-hidden {\n  opacity: 0;\n}\n\n.apexcharts-pie-label,\n.apexcharts-datalabels,\n.apexcharts-datalabel,\n.apexcharts-datalabel-label,\n.apexcharts-datalabel-value {\n  cursor: default;\n  pointer-events: none;\n}\n\n.apexcharts-pie-label-delay {\n  opacity: 0;\n  animation-name: opaque;\n  animation-duration: 0.3s;\n  animation-fill-mode: forwards;\n  animation-timing-function: ease;\n}\n\n.apexcharts-canvas .apexcharts-element-hidden {\n  opacity: 0;\n}\n\n.apexcharts-hide .apexcharts-series-points {\n  opacity: 0;\n}\n\n.apexcharts-gridline,\n.apexcharts-annotation-rect,\n.apexcharts-tooltip .apexcharts-marker,\n.apexcharts-area-series .apexcharts-area,\n.apexcharts-line,\n.apexcharts-zoom-rect,\n.apexcharts-toolbar svg,\n.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,\n.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,\n.apexcharts-radar-series path,\n.apexcharts-radar-series polygon {\n  pointer-events: none;\n}\n\n\n/* markers */\n\n.apexcharts-marker {\n  transition: 0.15s ease all;\n}\n\n@keyframes opaque {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n\n/* Resize generated styles */\n\n@keyframes resizeanim {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 0;\n  }\n}\n\n.resize-triggers {\n  animation: 1ms resizeanim;\n  visibility: hidden;\n  opacity: 0;\n}\n\n.resize-triggers,\n.resize-triggers>div,\n.contract-trigger:before {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n}\n\n.resize-triggers>div {\n  background: #eee;\n  overflow: auto;\n}\n\n.contract-trigger:before {\n  width: 200%;\n  height: 200%;\n}";
+  var css = ".apexcharts-canvas {\n  position: relative;\n  Budget-select: none;\n  /* cannot give overflow: hidden as it will crop tooltips which overflow outside chart area */\n}\n\n\n/* scrollbar is not visible by default for legend, hence forcing the visibility */\n.apexcharts-canvas ::-webkit-scrollbar {\n  -webkit-appearance: none;\n  width: 6px;\n}\n\n.apexcharts-canvas ::-webkit-scrollbar-thumb {\n  border-radius: 4px;\n  background-color: rgba(0, 0, 0, .5);\n  box-shadow: 0 0 1px rgba(255, 255, 255, .5);\n  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);\n}\n\n.apexcharts-canvas.apexcharts-theme-dark {\n  background: #424242;\n}\n\n.apexcharts-inner {\n  position: relative;\n}\n\n.apexcharts-text tspan {\n  font-family: inherit;\n}\n\n.legend-mouseover-inactive {\n  transition: 0.15s ease all;\n  opacity: 0.20;\n}\n\n.apexcharts-series-collapsed {\n  opacity: 0;\n}\n\n.apexcharts-tooltip {\n  border-radius: 5px;\n  box-shadow: 2px 2px 6px -4px #999;\n  cursor: default;\n  font-size: 14px;\n  left: 62px;\n  opacity: 0;\n  pointer-events: none;\n  position: absolute;\n  top: 20px;\n  overflow: hidden;\n  white-space: nowrap;\n  z-index: 12;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-tooltip.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-tooltip.apexcharts-theme-light {\n  border: 1px solid #e3e3e3;\n  background: rgba(255, 255, 255, 0.96);\n}\n\n.apexcharts-tooltip.apexcharts-theme-dark {\n  color: #fff;\n  background: rgba(30, 30, 30, 0.8);\n}\n\n.apexcharts-tooltip * {\n  font-family: inherit;\n}\n\n\n.apexcharts-tooltip-title {\n  padding: 6px;\n  font-size: 15px;\n  margin-bottom: 4px;\n}\n\n.apexcharts-tooltip.apexcharts-theme-light .apexcharts-tooltip-title {\n  background: #ECEFF1;\n  border-bottom: 1px solid #ddd;\n}\n\n.apexcharts-tooltip.apexcharts-theme-dark .apexcharts-tooltip-title {\n  background: rgba(0, 0, 0, 0.7);\n  border-bottom: 1px solid #333;\n}\n\n.apexcharts-tooltip-text-value,\n.apexcharts-tooltip-text-z-value {\n  display: inline-block;\n  font-weight: 600;\n  margin-left: 5px;\n}\n\n.apexcharts-tooltip-text-z-label:empty,\n.apexcharts-tooltip-text-z-value:empty {\n  display: none;\n}\n\n.apexcharts-tooltip-text-value,\n.apexcharts-tooltip-text-z-value {\n  font-weight: 600;\n}\n\n.apexcharts-tooltip-marker {\n  width: 12px;\n  height: 12px;\n  position: relative;\n  top: 0px;\n  margin-right: 10px;\n  border-radius: 50%;\n}\n\n.apexcharts-tooltip-series-group {\n  padding: 0 10px;\n  display: none;\n  text-align: left;\n  justify-content: left;\n  align-items: center;\n}\n\n.apexcharts-tooltip-series-group.apexcharts-active .apexcharts-tooltip-marker {\n  opacity: 1;\n}\n\n.apexcharts-tooltip-series-group.apexcharts-active,\n.apexcharts-tooltip-series-group:last-child {\n  padding-bottom: 4px;\n}\n\n.apexcharts-tooltip-series-group-hidden {\n  opacity: 0;\n  height: 0;\n  line-height: 0;\n  padding: 0 !important;\n}\n\n.apexcharts-tooltip-y-group {\n  padding: 6px 0 5px;\n}\n\n.apexcharts-tooltip-candlestick {\n  padding: 4px 8px;\n}\n\n.apexcharts-tooltip-candlestick>div {\n  margin: 4px 0;\n}\n\n.apexcharts-tooltip-candlestick span.value {\n  font-weight: bold;\n}\n\n.apexcharts-tooltip-rangebar {\n  padding: 5px 8px;\n}\n\n.apexcharts-tooltip-rangebar .category {\n  font-weight: 600;\n  color: #777;\n}\n\n.apexcharts-tooltip-rangebar .series-name {\n  font-weight: bold;\n  display: block;\n  margin-bottom: 5px;\n}\n\n.apexcharts-xaxistooltip {\n  opacity: 0;\n  padding: 9px 10px;\n  pointer-events: none;\n  color: #373d3f;\n  font-size: 13px;\n  text-align: center;\n  border-radius: 2px;\n  position: absolute;\n  z-index: 10;\n  background: #ECEFF1;\n  border: 1px solid #90A4AE;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-xaxistooltip.apexcharts-theme-dark {\n  background: rgba(0, 0, 0, 0.7);\n  border: 1px solid rgba(0, 0, 0, 0.5);\n  color: #fff;\n}\n\n.apexcharts-xaxistooltip:after,\n.apexcharts-xaxistooltip:before {\n  left: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.apexcharts-xaxistooltip:after {\n  border-color: rgba(236, 239, 241, 0);\n  border-width: 6px;\n  margin-left: -6px;\n}\n\n.apexcharts-xaxistooltip:before {\n  border-color: rgba(144, 164, 174, 0);\n  border-width: 7px;\n  margin-left: -7px;\n}\n\n.apexcharts-xaxistooltip-bottom:after,\n.apexcharts-xaxistooltip-bottom:before {\n  bottom: 100%;\n}\n\n.apexcharts-xaxistooltip-top:after,\n.apexcharts-xaxistooltip-top:before {\n  top: 100%;\n}\n\n.apexcharts-xaxistooltip-bottom:after {\n  border-bottom-color: #ECEFF1;\n}\n\n.apexcharts-xaxistooltip-bottom:before {\n  border-bottom-color: #90A4AE;\n}\n\n.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:after {\n  border-bottom-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-bottom.apexcharts-theme-dark:before {\n  border-bottom-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-top:after {\n  border-top-color: #ECEFF1\n}\n\n.apexcharts-xaxistooltip-top:before {\n  border-top-color: #90A4AE;\n}\n\n.apexcharts-xaxistooltip-top.apexcharts-theme-dark:after {\n  border-top-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip-top.apexcharts-theme-dark:before {\n  border-top-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-xaxistooltip.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-yaxistooltip {\n  opacity: 0;\n  padding: 4px 10px;\n  pointer-events: none;\n  color: #373d3f;\n  font-size: 13px;\n  text-align: center;\n  border-radius: 2px;\n  position: absolute;\n  z-index: 10;\n  background: #ECEFF1;\n  border: 1px solid #90A4AE;\n}\n\n.apexcharts-yaxistooltip.apexcharts-theme-dark {\n  background: rgba(0, 0, 0, 0.7);\n  border: 1px solid rgba(0, 0, 0, 0.5);\n  color: #fff;\n}\n\n.apexcharts-yaxistooltip:after,\n.apexcharts-yaxistooltip:before {\n  top: 50%;\n  border: solid transparent;\n  content: \" \";\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n}\n\n.apexcharts-yaxistooltip:after {\n  border-color: rgba(236, 239, 241, 0);\n  border-width: 6px;\n  margin-top: -6px;\n}\n\n.apexcharts-yaxistooltip:before {\n  border-color: rgba(144, 164, 174, 0);\n  border-width: 7px;\n  margin-top: -7px;\n}\n\n.apexcharts-yaxistooltip-left:after,\n.apexcharts-yaxistooltip-left:before {\n  left: 100%;\n}\n\n.apexcharts-yaxistooltip-right:after,\n.apexcharts-yaxistooltip-right:before {\n  right: 100%;\n}\n\n.apexcharts-yaxistooltip-left:after {\n  border-left-color: #ECEFF1;\n}\n\n.apexcharts-yaxistooltip-left:before {\n  border-left-color: #90A4AE;\n}\n\n.apexcharts-yaxistooltip-left.apexcharts-theme-dark:after {\n  border-left-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-left.apexcharts-theme-dark:before {\n  border-left-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-right:after {\n  border-right-color: #ECEFF1;\n}\n\n.apexcharts-yaxistooltip-right:before {\n  border-right-color: #90A4AE;\n}\n\n.apexcharts-yaxistooltip-right.apexcharts-theme-dark:after {\n  border-right-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip-right.apexcharts-theme-dark:before {\n  border-right-color: rgba(0, 0, 0, 0.5);\n}\n\n.apexcharts-yaxistooltip.apexcharts-active {\n  opacity: 1;\n}\n\n.apexcharts-yaxistooltip-hidden {\n  display: none;\n}\n\n.apexcharts-xcrosshairs,\n.apexcharts-ycrosshairs {\n  pointer-events: none;\n  opacity: 0;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-xcrosshairs.apexcharts-active,\n.apexcharts-ycrosshairs.apexcharts-active {\n  opacity: 1;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-ycrosshairs-hidden {\n  opacity: 0;\n}\n\n.apexcharts-selection-rect {\n  cursor: move;\n}\n\n.svg_select_boundingRect, .svg_select_points_rot {\n  pointer-events: none;\n  opacity: 0;\n  visibility: hidden;\n}\n.apexcharts-selection-rect + g .svg_select_boundingRect,\n.apexcharts-selection-rect + g .svg_select_points_rot {\n  opacity: 0;\n  visibility: hidden;\n}\n\n.apexcharts-selection-rect + g .svg_select_points_l,\n.apexcharts-selection-rect + g .svg_select_points_r {\n  cursor: ew-resize;\n  opacity: 1;\n  visibility: visible;\n}\n\n.svg_select_points {\n  fill: #efefef;\n  stroke: #333;\n  rx: 2;\n}\n\n.apexcharts-canvas.apexcharts-zoomable .hovering-zoom {\n  cursor: crosshair\n}\n\n.apexcharts-canvas.apexcharts-zoomable .hovering-pan {\n  cursor: move\n}\n\n.apexcharts-zoom-icon,\n.apexcharts-zoomin-icon,\n.apexcharts-zoomout-icon,\n.apexcharts-reset-icon,\n.apexcharts-pan-icon,\n.apexcharts-selection-icon,\n.apexcharts-menu-icon,\n.apexcharts-toolbar-custom-icon {\n  cursor: pointer;\n  width: 20px;\n  height: 20px;\n  line-height: 24px;\n  color: #6E8192;\n  text-align: center;\n}\n\n.apexcharts-zoom-icon svg,\n.apexcharts-zoomin-icon svg,\n.apexcharts-zoomout-icon svg,\n.apexcharts-reset-icon svg,\n.apexcharts-menu-icon svg {\n  fill: #6E8192;\n}\n\n.apexcharts-selection-icon svg {\n  fill: #444;\n  transform: scale(0.76)\n}\n\n.apexcharts-theme-dark .apexcharts-zoom-icon svg,\n.apexcharts-theme-dark .apexcharts-zoomin-icon svg,\n.apexcharts-theme-dark .apexcharts-zoomout-icon svg,\n.apexcharts-theme-dark .apexcharts-reset-icon svg,\n.apexcharts-theme-dark .apexcharts-pan-icon svg,\n.apexcharts-theme-dark .apexcharts-selection-icon svg,\n.apexcharts-theme-dark .apexcharts-menu-icon svg,\n.apexcharts-theme-dark .apexcharts-toolbar-custom-icon svg {\n  fill: #f3f4f5;\n}\n\n.apexcharts-canvas .apexcharts-zoom-icon.apexcharts-selected svg,\n.apexcharts-canvas .apexcharts-selection-icon.apexcharts-selected svg,\n.apexcharts-canvas .apexcharts-reset-zoom-icon.apexcharts-selected svg {\n  fill: #008FFB;\n}\n\n.apexcharts-theme-light .apexcharts-selection-icon:not(.apexcharts-selected):hover svg,\n.apexcharts-theme-light .apexcharts-zoom-icon:not(.apexcharts-selected):hover svg,\n.apexcharts-theme-light .apexcharts-zoomin-icon:hover svg,\n.apexcharts-theme-light .apexcharts-zoomout-icon:hover svg,\n.apexcharts-theme-light .apexcharts-reset-icon:hover svg,\n.apexcharts-theme-light .apexcharts-menu-icon:hover svg {\n  fill: #333;\n}\n\n.apexcharts-selection-icon,\n.apexcharts-menu-icon {\n  position: relative;\n}\n\n.apexcharts-reset-icon {\n  margin-left: 5px;\n}\n\n.apexcharts-zoom-icon,\n.apexcharts-reset-icon,\n.apexcharts-menu-icon {\n  transform: scale(0.85);\n}\n\n.apexcharts-zoomin-icon,\n.apexcharts-zoomout-icon {\n  transform: scale(0.7)\n}\n\n.apexcharts-zoomout-icon {\n  margin-right: 3px;\n}\n\n.apexcharts-pan-icon {\n  transform: scale(0.62);\n  position: relative;\n  left: 1px;\n  top: 0px;\n}\n\n.apexcharts-pan-icon svg {\n  fill: #fff;\n  stroke: #6E8192;\n  stroke-width: 2;\n}\n\n.apexcharts-pan-icon.apexcharts-selected svg {\n  stroke: #008FFB;\n}\n\n.apexcharts-pan-icon:not(.apexcharts-selected):hover svg {\n  stroke: #333;\n}\n\n.apexcharts-toolbar {\n  position: absolute;\n  z-index: 11;\n  max-width: 176px;\n  text-align: right;\n  border-radius: 3px;\n  padding: 0px 6px 2px 6px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n\n.apexcharts-menu {\n  background: #fff;\n  position: absolute;\n  top: 100%;\n  border: 1px solid #ddd;\n  border-radius: 3px;\n  padding: 3px;\n  right: 10px;\n  opacity: 0;\n  min-width: 110px;\n  transition: 0.15s ease all;\n  pointer-events: none;\n}\n\n.apexcharts-menu.apexcharts-menu-open {\n  opacity: 1;\n  pointer-events: all;\n  transition: 0.15s ease all;\n}\n\n.apexcharts-menu-item {\n  padding: 6px 7px;\n  font-size: 12px;\n  cursor: pointer;\n}\n\n.apexcharts-theme-light .apexcharts-menu-item:hover {\n  background: #eee;\n}\n\n.apexcharts-theme-dark .apexcharts-menu {\n  background: rgba(0, 0, 0, 0.7);\n  color: #fff;\n}\n\n@media screen and (min-width: 768px) {\n  .apexcharts-canvas:hover .apexcharts-toolbar {\n    opacity: 1;\n  }\n}\n\n.apexcharts-datalabel.apexcharts-element-hidden {\n  opacity: 0;\n}\n\n.apexcharts-pie-label,\n.apexcharts-datalabels,\n.apexcharts-datalabel,\n.apexcharts-datalabel-label,\n.apexcharts-datalabel-value {\n  cursor: default;\n  pointer-events: none;\n}\n\n.apexcharts-pie-label-delay {\n  opacity: 0;\n  animation-name: opaque;\n  animation-duration: 0.3s;\n  animation-fill-mode: forwards;\n  animation-timing-function: ease;\n}\n\n.apexcharts-canvas .apexcharts-element-hidden {\n  opacity: 0;\n}\n\n.apexcharts-hide .apexcharts-series-points {\n  opacity: 0;\n}\n\n.apexcharts-gridline,\n.apexcharts-annotation-rect,\n.apexcharts-tooltip .apexcharts-marker,\n.apexcharts-area-series .apexcharts-area,\n.apexcharts-line,\n.apexcharts-zoom-rect,\n.apexcharts-toolbar svg,\n.apexcharts-area-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,\n.apexcharts-line-series .apexcharts-series-markers .apexcharts-marker.no-pointer-events,\n.apexcharts-radar-series path,\n.apexcharts-radar-series polygon {\n  pointer-events: none;\n}\n\n\n/* markers */\n\n.apexcharts-marker {\n  transition: 0.15s ease all;\n}\n\n@keyframes opaque {\n  0% {\n    opacity: 0;\n  }\n  100% {\n    opacity: 1;\n  }\n}\n\n\n/* Resize generated styles */\n\n@keyframes resizeanim {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 0;\n  }\n}\n\n.resize-triggers {\n  animation: 1ms resizeanim;\n  visibility: hidden;\n  opacity: 0;\n}\n\n.resize-triggers,\n.resize-triggers>div,\n.contract-trigger:before {\n  content: \" \";\n  display: block;\n  position: absolute;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%;\n  overflow: hidden;\n}\n\n.resize-triggers>div {\n  background: #eee;\n  overflow: auto;\n}\n\n.contract-trigger:before {\n  width: 200%;\n  height: 200%;\n}";
   styleInject(css);
 
   /**
@@ -28878,7 +28878,7 @@
       _classCallCheck(this, ApexCharts);
 
       this.opts = opts;
-      this.ctx = this; // Pass the user supplied options to the Base Class where these options will be extended with defaults. The returned object from Base Class will become the config object in the entire codebase.
+      this.ctx = this; // Pass the Budget supplied options to the Base Class where these options will be extended with defaults. The returned object from Base Class will become the config object in the entire codebase.
 
       this.w = new Base(opts).init();
       this.el = el;
@@ -28890,7 +28890,7 @@
       this.windowResizeHandler = this._windowResize.bind(this);
     }
     /**
-     * The primary method user will call to render the chart.
+     * The primary method Budget will call to render the chart.
      */
 
 
@@ -28986,7 +28986,7 @@
           this.series.handleNoData();
         }
 
-        this.events.setupEventHandlers(); // Handle the data inputted by user and set some of the global variables (for eg, if data is datetime / numeric / category). Don't calculate the range / min / max at this time
+        this.events.setupEventHandlers(); // Handle the data inputted by Budget and set some of the global variables (for eg, if data is datetime / numeric / category). Don't calculate the range / min / max at this time
 
         this.data.parseData(ser); // this is a good time to set theme colors first
 
@@ -28997,7 +28997,7 @@
 
         this.formatters.setLabelFormatters();
         this.titleSubtitle.draw(); // legend is calculated here before coreCalculations because it affects the plottable area
-        // if there is some data to show or user collapsed all series, then proceed drawing legend
+        // if there is some data to show or Budget collapsed all series, then proceed drawing legend
 
         if (!gl.noData || gl.collapsedSeries.length === gl.series.length) {
           this.legend.init();
@@ -29199,12 +29199,12 @@
             options.series = options.series.map(function (s, i) {
               return _this3.updateHelpers._extendSeries(s, i);
             });
-          } // user updated the series via updateOptions() function.
+          } // Budget updated the series via updateOptions() function.
           // Hence, we need to reset axis min/max to avoid zooming issues
 
 
           this.updateHelpers.revertDefaultAxisMinMax();
-        } // user has set x-axis min/max externally - hence we need to forcefully set the xaxis min/max
+        } // Budget has set x-axis min/max externally - hence we need to forcefully set the xaxis min/max
 
 
         if (options.xaxis) {
@@ -29318,7 +29318,7 @@
         });
       }
       /**
-       * Get all charts in the same "group" (including the instance which is called upon) to sync them when user zooms in/out or pan.
+       * Get all charts in the same "group" (including the instance which is called upon) to sync them when Budget zooms in/out or pan.
        */
 
     }, {
@@ -29540,7 +29540,7 @@
         return c && c.chart;
       }
       /**
-       * Allows the user to provide data attrs in the element and the chart will render automatically when this method is called by searching for the elements containing 'data-apexcharts' attribute
+       * Allows the Budget to provide data attrs in the element and the chart will render automatically when this method is called by searching for the elements containing 'data-apexcharts' attribute
        */
 
     }, {
@@ -29557,7 +29557,7 @@
       }
       /**
        * This static method allows users to call chart methods without necessarily from the
-       * instance of the chart in case user has assigned chartID to the targetted chart.
+       * instance of the chart in case Budget has assigned chartID to the targetted chart.
        * The chartID is used for mapping the instance stored in Apex._chartInstances global variable
        *
        * This is helpful in cases when you don't have reference of the chart instance

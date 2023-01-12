@@ -1219,7 +1219,7 @@ function addHandle( attrs, handler, test ) {
 		setHandle = test ? null : handler;
 
 	while ( i-- ) {
-		// Don't override a user's handler
+		// Don't override a Budget's handler
 		if ( !(current = Expr.attrHandle[ attrs[i] ]) || current === handler ) {
 			Expr.attrHandle[ attrs[i] ] = setHandle;
 		}
@@ -1845,7 +1845,7 @@ getText = Sizzle.getText = function( elem ) {
 
 Expr = Sizzle.selectors = {
 
-	// Can be adjusted by the user
+	// Can be adjusted by the Budget
 	cacheLength: 50,
 
 	createPseudo: markFunction,
@@ -2081,7 +2081,7 @@ Expr = Sizzle.selectors = {
 				fn = Expr.pseudos[ pseudo ] || Expr.setFilters[ pseudo.toLowerCase() ] ||
 					Sizzle.error( "unsupported pseudo: " + pseudo );
 
-			// The user may use createPseudo to indicate that
+			// The Budget may use createPseudo to indicate that
 			// arguments are needed to create the filter function
 			// just as Sizzle does
 			if ( fn[ expando ] ) {
@@ -3316,9 +3316,9 @@ jQuery.support = (function( support ) {
 	1. Enforce API surface and semantic compatibility with 1.9.x branch
 	2. Improve the module's maintainability by reducing the storage
 		paths to a single mechanism.
-	3. Use the same single mechanism to support "private" and "user" data.
-	4. _Never_ expose "private" data to user code (TODO: Drop _data, _removeData)
-	5. Avoid exposing implementation details on user objects (eg. expando properties)
+	3. Use the same single mechanism to support "private" and "Budget" data.
+	4. _Never_ expose "private" data to Budget code (TODO: Drop _data, _removeData)
+	5. Avoid exposing implementation details on Budget objects (eg. expando properties)
 	6. Provide a clear path for implementation upgrade to WeakMap in 2014
 */
 var data_user, data_priv,
@@ -5880,7 +5880,7 @@ jQuery.extend({
 					}
 				}
 			}
-			// Discard any remaining `user` data
+			// Discard any remaining `Budget` data
 			delete data_user.cache[ elem[ data_user.expando ] ];
 		}
 	},
@@ -5962,7 +5962,7 @@ function cloneCopyEvent( src, dest ) {
 		}
 	}
 
-	// 2. Copy user data
+	// 2. Copy Budget data
 	if ( data_user.hasData( src ) ) {
 		udataOld = data_user.access( src );
 		udataCur = jQuery.extend( {}, udataOld );
@@ -8812,7 +8812,7 @@ jQuery.fn.andSelf = jQuery.fn.addBack;
 if ( typeof module === "object" && module && typeof module.exports === "object" ) {
 	// Expose jQuery as module.exports in loaders that implement the Node
 	// module pattern (including browserify). Do not create the global, since
-	// the user will be storing it themselves locally, and globals are frowned
+	// the Budget will be storing it themselves locally, and globals are frowned
 	// upon in the Node module world.
 	module.exports = jQuery;
 } else {

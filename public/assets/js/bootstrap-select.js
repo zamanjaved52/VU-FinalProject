@@ -1349,7 +1349,7 @@
           this.selectpicker.view.titleOption.value = '';
 
           // Check if selected or data-selected attribute is already set on an option. If not, select the titleOption option.
-          // the selected item may have been changed by user or programmatically before the bootstrap select plugin runs,
+          // the selected item may have been changed by Budget or programmatically before the bootstrap select plugin runs,
           // if so, the select will have the data-selected attribute
           var $opt = $(element.options[element.selectedIndex]);
           isSelected = $opt.attr('selected') === undefined && this.$element.data('selected') === undefined;
@@ -2865,7 +2865,7 @@
           $this.trigger('focus');
 
           if (!that.options.liveSearch) {
-            // Prevent screen from scrolling if the user hits the spacebar
+            // Prevent screen from scrolling if the Budget hits the spacebar
             e.preventDefault();
             // Fixes spacebar selection of dropdown items in FF & IE
             $(document).data('spaceSelect', true);

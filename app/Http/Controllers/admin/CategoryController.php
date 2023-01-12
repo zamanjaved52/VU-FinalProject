@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
+use App\Budget;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 class CategoryController extends Controller
 {
     /**
@@ -17,8 +16,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories=Category::all();
-        return view('admin.categories.index',compact('categories'));
+        $category = Category::latest()->paginate(5);
+
+        return view('category.index',compact('category'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+
     }
 
     /**
@@ -28,7 +30,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
+
     }
 
     /**
@@ -40,14 +43,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
-        ]);
-        $category = Category::create($request->all());
-        $category->save();
-        Session::flash('success','Created Successfully!!');
-        return redirect()->back();
-    }
+            'category' => 'required',
 
+        ]);
+
+        Category::create($request->all());
+
+        return redirect()->to('admin/budget')
+            ->with('success','Product created successfully.');
+    }
 
     /**
      * Display the specified resource.
@@ -55,9 +59,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Budget $category)
     {
-        //
+        return view('category.show',compact('category'));
+
     }
 
     /**
@@ -66,12 +71,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($category)
+    public function edit(Category $category, $id)
     {
-        $category=Category::findOrFail($category);
-        $categories=Category::all();
-        //dd($question);
-        return view('admin.categories.index',compact('categories','category'));
+        $category=Category::findOrFail($id);
+        return view('category.edit',compact('category'));
+
     }
 
     /**
@@ -81,17 +85,20 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $category)
+    public function update(Request $request, Category $budget)
     {
         $request->validate([
-            'name'=>'required',
+            'category' => 'required',
         ]);
-        $category=Category::findOrFail($category);
-        $category->update($request->all());
-        //dd($request->all());
-        $category->save();
-        Session::flash('success','Updated Successfully!!');
-        return redirect()->route('categories.index');
+
+
+        $budget->update([
+
+            'user_id'=> Auth::id(),
+            'category'=> $request->category,
+        ]);
+        return redirect()->to('admin/category')
+            ->with('success','Product updated successfully');
     }
 
     /**
@@ -100,11 +107,12 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($category)
+    public function destroy(Category $id)
     {
-        $category=Category::findOrFail($category);
-        $category->delete();
-        Session::flash('success','Deleted Successfully!!');
-        return redirect()->back();
+        $budget=Category::findOrfail($id);
+        $budget->delete();
+
+        return redirect()->to('admin/category')
+            ->with('success','Product deleted successfully');
     }
 }

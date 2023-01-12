@@ -224,7 +224,7 @@ author: Jack O'Connor (http://jackocnr.com)
                 this.telInput.val("+" + dialCode + " ");
             }
         },
-        // called when the user selects a list item from the dropdown
+        // called when the Budget selects a list item from the dropdown
         _selectListItem: function(listItem) {
             var countryCode = listItem.attr("data-country-code");
             // update selected flag
@@ -389,7 +389,7 @@ var intlTelInput = {
         "calling-code": "971"
     } ],
     // JavaScript object mapping dial code to country code.
-    // This is used when the user enters a number,
+    // This is used when the Budget enters a number,
     // to quickly look up the corresponding country code.
     // Originally from http://libphonenumber.googlecode.com/svn/trunk/javascript/i18n/phonenumbers/metadata.js
     // then I commented some weird 001 entries and added some 4-digit country-code

@@ -63,11 +63,6 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
         ],
-        
-        'my_files' => [
-      'driver' => 'local',
-      'root'   => '/images/questions/video'
-   ],
 
     ],
 
