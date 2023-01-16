@@ -18,7 +18,7 @@ class ExpensesController extends Controller
     {
         $expense = Expense::latest()->paginate(5);
 
-        return view('expense.index',compact('expense'))
+        return view('expense.index', compact('expense'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
 
     }
@@ -37,7 +37,7 @@ class ExpensesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,51 +46,61 @@ class ExpensesController extends Controller
 //            'category' => 'required',
 //        ]);
 
+        /*Expense::create($request->all());*/
+        $expense = new Expense();
+        $expense->category_id = $request->category_id;
+        $expense->name = $request->name;
+        $expense->price = $request->price;
+        $expense->save();
+
         $budget = Budget::query()->select('budget')->first();
         $get_budget = $budget->budget;
         $expense = Expense::query()->select('price')->first();
         $get_expense = $expense->price;
         $current_budget = $get_budget - $get_expense;
 
-        Expense::create($request->all());
+        Budget::query()->updateOrCreate(
+            [
+                'user_id' => Auth::id()
+            ],
+            [
+                'budget' => $current_budget
+            ]);
 
-        Budget::update([
-        'budget' =>   $current_budget
-        ]);
         return redirect()->to('admin/expense')
-            ->with('success','Product created successfully.');
+            ->with('success', 'Product created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Expense $expense)
     {
-        return view('expense.show',compact('expense'));
+        return view('expense.show', compact('expense'));
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Expense $expense, $id)
     {
-        $expense=Expense::findOrFail($id);
-        return view('expense.edit',compact('expense'));
+        $expense = Expense::findOrFail($id);
+        return view('expense.edit', compact('expense'));
 
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Expense $expense)
@@ -103,21 +113,21 @@ class ExpensesController extends Controller
         Expense::create($request->all());
 
         return redirect()->to('admin/expense')
-            ->with('success','Product updated successfully');
+            ->with('success', 'Product updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        $expense=Expense::findOrfail($id);
+        $expense = Expense::findOrfail($id);
         $expense->delete();
 
         return redirect()->to('admin/expense')
-            ->with('success','Product deleted successfully');
+            ->with('success', 'Product deleted successfully');
     }
 }

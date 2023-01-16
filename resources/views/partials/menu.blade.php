@@ -33,6 +33,22 @@
                      Expense
                 </a>
             </li>
+            <li>
+                <a href="{{ url('admin/expense') }}">
+                    <i class="fas fa-fw fa-tachometer-alt">
+
+                    </i>
+                     Expense Status
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('admin/expense') }}">
+                    <i class="fas fa-fw fa-tachometer-alt">
+
+                    </i>
+                     Status Expense
+                </a>
+            </li>
             @can('user_management_access')
                 <li class="treeview">
                     <a href="#">

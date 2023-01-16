@@ -27,23 +27,20 @@
         @csrf
 
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>User_id:</strong>
-                    <input type="text" name="user_id" class="form-control" placeholder="user_id">
-                </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
                 <div class="form-group">
                     <strong>Budget:</strong>
-                    <input type="text" name="budget" class="form-control" placeholder="budget">
+                    <input type="number" name="budget" value="" class="form-control" placeholder="budget">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Saving:</strong>
-                    <textarea class="form-control" style="height:150px" name="saving" placeholder="saving"></textarea>
-                </div>
+        <div class="col-xs-12 col-sm-12 col-md-6">
+            <div class="form-group">
+                <strong>Saving:</strong>
+                <input type="number" name="saving" value="" class="form-control" placeholder="budget">
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+        </div>
+        </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 text-left" style="float: left">
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>

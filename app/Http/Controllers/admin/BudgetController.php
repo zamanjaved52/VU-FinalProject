@@ -43,12 +43,25 @@ class BudgetController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'user_id' => 'required',
             'budget' => 'required',
             'saving' => 'required',
         ]);
 
-        Budget::create($request->all());
+        $old_budget = Budget::query()->select('budget')->first();
+        $old_saving = Budget::query()->select('saving')->first();
+        $new_budget = $request->budget;
+        $new_saving = $request->saving;
+        $current_budget =  $old_budget->budget + $new_budget;
+        $current_saving = $old_saving->saving + $new_saving;
+
+        Budget::query()->updateOrCreate(
+            [
+                'user_id' => \auth()->id()
+            ],
+            [
+                'budget' => $current_budget,
+                'saving' => $current_saving,
+            ]);
 
         return redirect()->to('admin/budget')
             ->with('success','Product created successfully.');

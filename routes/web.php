@@ -56,6 +56,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('expense_update/{budget}', [ExpensesController::class,'update'])->name('expense_update');
     Route::delete('expense_destroy/{id}', [ExpensesController::class,'destroy'])->name('expense_destroy');
 
+    Route::get('expense_status', [ExpensesController::class,'index'])->name('expense.status');
+    Route::get('saving_status', [ExpensesController::class,'index'])->name('saving.status');
+
 
 });
 

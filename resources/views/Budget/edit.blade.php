@@ -28,21 +28,15 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>User_id:</strong>
-                    <input type="text" name="user_id" value="{{ $budget->user_id }}" class="form-control" placeholder="user_id">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                     <strong>Budget:</strong>
-                    <input type="text" name="budget" value="{{ $budget->budget }}" class="form-control" placeholder="budget">
+                    <input type="number" name="budget" value="{{ $budget->budget }}" class="form-control" placeholder="budget">
                 </div>
             </div></div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Saving:</strong>
-                    <textarea class="form-control" style="height:150px" name="saving" placeholder="saving">{{ $budget->saving }}</textarea>
+                    <input type="number" name="budget" value="{{ $budget->saving }}" class="form-control" placeholder="budget">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

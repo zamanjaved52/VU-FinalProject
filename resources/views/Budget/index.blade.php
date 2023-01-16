@@ -23,14 +23,13 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>User_id</th>
             <th>Budget</th>
             <th width="280px">Saving</th>
+            <th width="280px">Action</th>
         </tr>
         @foreach ($budget as $product)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $product->user_id }}</td>
                 <td>{{ $product->budget }}</td>
                 <td>{{ $product->saving }}</td>
                 <td>
