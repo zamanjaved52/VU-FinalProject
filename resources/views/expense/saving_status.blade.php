@@ -22,9 +22,7 @@
                 ]);
 
                 var options = {
-                    title: 'Total Saving: {{$desiredSaving}}',
-                    {{--title: 'Total Saving: {{$desiredSaving}}',--}}
-                    {{--title: 'Total Saving: {{$desiredSaving}}'--}}
+                    title: 'Total Saving: {{$desiredSaving+$currentSaving}}',
 
                 };
 

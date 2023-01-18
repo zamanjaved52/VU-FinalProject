@@ -10,7 +10,7 @@
                 </a>
             </li>
 
-                @can('permission_access')
+
 
                 <li>
                 <a href="{{ url('admin/budget') }}">
@@ -20,8 +20,6 @@
                      Budget
                 </a>
             </li>
-                @endcan
-                @can('permission_access')
 
                 <li>
                 <a href="{{ url('admin/category') }}">
@@ -31,8 +29,6 @@
                      Category
                 </a>
             </li>
-                @endcan
-                @can('permission_access')
 
                 <li>
                 <a href="{{ url('admin/expense') }}">
@@ -42,8 +38,6 @@
                      Expense
                 </a>
             </li>
-                @endcan
-            @can('permission_access')
 
             <li>
                 <a href="{{ url('admin/expense_status') }}">
@@ -53,8 +47,6 @@
                      Expense Status
                 </a>
             </li>
-            @endcan
-            @can('permission_access')
 
             <li>
                 <a href="{{ url('admin/saving_status')}}">
@@ -64,7 +56,6 @@
                      Saving Expense
                 </a>
             </li>
-            @endcan
             @can('user_management_access')
                 <li class="treeview">
                     <a href="#">

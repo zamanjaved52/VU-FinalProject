@@ -193,7 +193,8 @@ class ExpensesController extends Controller
             'Desired Saving' => $desiredSaving
         ];
 
-        return view('expense/saving_status',compact('allSaving','desiredSaving'));
+
+        return view('expense/saving_status',compact('allSaving','desiredSaving','currentSaving'));
 
 //        return view('expense/saving_status');
     }
