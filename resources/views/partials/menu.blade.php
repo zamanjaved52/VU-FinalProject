@@ -9,7 +9,10 @@
                     {{ trans('global.dashboard') }}
                 </a>
             </li>
-            <li>
+
+                @can('permission_access')
+
+                <li>
                 <a href="{{ url('admin/budget') }}">
                     <i class="fas fa-fw fa-tachometer-alt">
 
@@ -17,7 +20,10 @@
                      Budget
                 </a>
             </li>
-            <li>
+                @endcan
+                @can('permission_access')
+
+                <li>
                 <a href="{{ url('admin/category') }}">
                     <i class="fas fa-fw fa-tachometer-alt">
 
@@ -25,7 +31,10 @@
                      Category
                 </a>
             </li>
-            <li>
+                @endcan
+                @can('permission_access')
+
+                <li>
                 <a href="{{ url('admin/expense') }}">
                     <i class="fas fa-fw fa-tachometer-alt">
 
@@ -33,6 +42,9 @@
                      Expense
                 </a>
             </li>
+                @endcan
+            @can('permission_access')
+
             <li>
                 <a href="{{ url('admin/expense_status') }}">
                     <i class="fas fa-fw fa-tachometer-alt">
@@ -41,6 +53,9 @@
                      Expense Status
                 </a>
             </li>
+            @endcan
+            @can('permission_access')
+
             <li>
                 <a href="{{ url('admin/saving_status')}}">
                     <i class="fas fa-fw fa-tachometer-alt">
@@ -49,6 +64,7 @@
                      Saving Expense
                 </a>
             </li>
+            @endcan
             @can('user_management_access')
                 <li class="treeview">
                     <a href="#">
