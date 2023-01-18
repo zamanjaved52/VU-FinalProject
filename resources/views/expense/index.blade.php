@@ -38,7 +38,7 @@
                 <td>
                     <form action="{{ url('admin/expense_destroy',$exp->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ url('admin/expense_show',$exp->id) }}">Show</a>
+{{--                        <a class="btn btn-info" href="{{ url('admin/expense_show',$exp->id) }}">Show</a>--}}
 
                         <a class="btn btn-primary" href="{{ url('admin/expense_edit',$exp->id) }}">Edit</a>
 

@@ -6,7 +6,7 @@
             <div class="pull-left">
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{url('admin/category_create')}}"> Create New Product</a>
+                <a class="btn btn-success" href="{{url('admin/category_create')}}"> Create New Category</a>
             </div>
         </div>
     </div>
@@ -33,7 +33,7 @@
                 <td>
                     <form action="{{ url('admin/category_destroy',$cat->id) }}" method="POST">
 
-                        <a class="btn btn-info" href="{{ url('admin/category_show',$cat->id) }}">Show</a>
+{{--                        <a class="btn btn-info" href="{{ url('admin/category_show',$cat->id) }}">Show</a>--}}
 
                         <a class="btn btn-primary" href="{{ url('admin/category_edit',$cat->id) }}">Edit</a>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Budget;
 use App\Expense;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -130,4 +131,71 @@ class ExpensesController extends Controller
         return redirect()->to('admin/expense')
             ->with('success', 'Product deleted successfully');
     }
+
+    public function expenseStatus()
+    {
+        $allExpenses = Expense::query();
+         $expenses =   $allExpenses->get()->groupBy('category.category');
+
+         $expenses =$expenses->map(function ( $cat){
+             return array_sum($cat->pluck('price')->toArray());
+         });
+         $totalExpense = array_sum($expenses->toArray());
+
+
+        return view('expense/expense_status',compact('expenses','totalExpense'));
+    }
+    public function savingStatus()
+    {
+       /* $allExpenses = Expense::query();
+        $expenses =   $allExpenses->get()->groupBy('budget.saving');
+
+        $expenses =$expenses->map(function ( $cat){
+            return array_sum($cat->pluck('price')->toArray());
+        });
+        $totalExpense = array_sum($expenses->toArray());
+
+        $saving = $allExpenses->select('saving')->first();
+        $budget = $allExpenses->select('budget')->first();
+        $desired_saving = $saving->toArray();
+        $desiredSaving = (int)$desired_saving['saving'];
+
+        $budgets = $budget->toArray();
+        $oldBudget = (int)$budgets['budget'];
+
+        $currentSaving =  - $oldBudget-$totalExpense;*/
+
+
+        $allExpenses = Expense::query();
+        $expenses =   $allExpenses->get()->groupBy('category.category');
+
+        $expenses =$expenses->map(function ( $cat){
+            return array_sum($cat->pluck('price')->toArray());
+        });
+        $totalExpense = array_sum($expenses->toArray());
+
+
+
+        $saving_calculation = Budget::query();
+        $saving = $saving_calculation->select('saving')->first();
+        $budget = $saving_calculation->select('budget')->first();
+
+        $desired_saving = $saving->toArray();
+        $desiredSaving = (int)$desired_saving['saving'];
+
+        $budgets = $budget->toArray();
+        $oldBudget = (int)$budgets['budget'];
+
+        $currentSaving =  $oldBudget-$totalExpense;
+
+        $allSaving = [
+            'Current Saving' => $currentSaving,
+            'Desired Saving' => $desiredSaving
+        ];
+
+        return view('expense/saving_status',compact('allSaving','desiredSaving'));
+
+//        return view('expense/saving_status');
+    }
 }
+

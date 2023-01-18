@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Add New Product</h2>
+                <h2>Add New Budget</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ url('admin/budget') }}"> Back</a>
@@ -25,7 +25,6 @@
 
     <form action="{{ url('admin/store') }}" method="POST">
         @csrf
-
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-6">
                 <div class="form-group">
@@ -36,12 +35,12 @@
         <div class="col-xs-12 col-sm-12 col-md-6">
             <div class="form-group">
                 <strong>Saving:</strong>
-                <input type="number" name="saving" value="" class="form-control" placeholder="budget">
+                <input type="number" name="saving" value="" class="form-control" placeholder="saving">
             </div>
         </div>
         </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-left" style="float: left">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
 

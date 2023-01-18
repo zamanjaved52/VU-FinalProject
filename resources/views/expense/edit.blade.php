@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Product</h2>
+                <h2>Edit Expense</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ url('admin/expense') }}"> Back</a>
@@ -49,7 +49,7 @@
                     <input type="text" name="price" class="form-control" placeholder="price" value="{{$expense->price}}">
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>

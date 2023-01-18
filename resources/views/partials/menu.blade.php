@@ -34,7 +34,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/expense') }}">
+                <a href="{{ url('admin/expense_status') }}">
                     <i class="fas fa-fw fa-tachometer-alt">
 
                     </i>
@@ -42,11 +42,11 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('admin/expense') }}">
+                <a href="{{ url('admin/saving_status')}}">
                     <i class="fas fa-fw fa-tachometer-alt">
 
                     </i>
-                     Status Expense
+                     Saving Expense
                 </a>
             </li>
             @can('user_management_access')
