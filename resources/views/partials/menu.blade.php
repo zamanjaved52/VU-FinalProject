@@ -14,7 +14,7 @@
 
                 <li>
                 <a href="{{ url('admin/budget') }}">
-                    <i class="fas fa-fw fa-tachometer-alt">
+                    <i class="fas fa-fw fa fa-credit-card">
 
                     </i>
                      Budget
@@ -23,7 +23,7 @@
 
                 <li>
                 <a href="{{ url('admin/category') }}">
-                    <i class="fas fa-fw fa-tachometer-alt">
+                    <i class="fas fa-fw fa-file">
 
                     </i>
                      Category
@@ -32,7 +32,7 @@
 
                 <li>
                 <a href="{{ url('admin/expense') }}">
-                    <i class="fas fa-fw fa-tachometer-alt">
+                    <i class="fas fa-fw fa fa-money">
 
                     </i>
                      Expense
@@ -41,7 +41,7 @@
 
             <li>
                 <a href="{{ url('admin/expense_status') }}">
-                    <i class="fas fa-fw fa-tachometer-alt">
+                    <i class="fas fa-fw fa fa-money">
 
                     </i>
                      Expense Status
@@ -50,7 +50,7 @@
 
             <li>
                 <a href="{{ url('admin/saving_status')}}">
-                    <i class="fas fa-fw fa-tachometer-alt">
+                    <i class="fas fa-fw fa fa-save">
 
                     </i>
                      Saving Expense
